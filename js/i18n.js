@@ -1,0 +1,780 @@
+/* =========================================================
+   SGB · Concienciación del Síndrome de Guillain-Barré
+   Internacionalización (i18n)
+   Idiomas soportados: español (es), inglés (en),
+   alemán (de) y francés (fr).
+   ========================================================= */
+(function () {
+  "use strict";
+
+  var doc = document;
+  var SUPPORTED = ["es", "en", "de", "fr"];
+  var STORAGE_KEY = "sgb-lang";
+  var currentLang = "es";
+
+  var translations = {
+    /* ---------- Español (idioma base) ---------- */
+    es: {
+      "meta.title": "SGB · Concienciación del Síndrome de Guillain-Barré",
+      "meta.description": "Síndrome de Guillain-Barré (SGB): web de concienciación. Información, síntomas, cómo ayudar y merchandising solidario. Únete a la causa.",
+      "meta.og.title": "SGB · Concienciación del Síndrome de Guillain-Barré",
+      "meta.og.description": "Información, apoyo y merchandising solidario para visibilizar el Síndrome de Guillain-Barré.",
+      "skip.content": "Saltar al contenido",
+      "brand.aria": "Inicio - SGB",
+      "nav.que-es": "Qué es",
+      "nav.sintomas": "Síntomas",
+      "nav.concienciacion": "Concienciación",
+      "nav.merchan": "Merchandising",
+      "nav.ayuda": "Cómo ayudar",
+      "cta.tienda": "Tienda solidaria",
+      "attr.cart": "Carrito de merchandising",
+      "attr.menu.open": "Abrir menú",
+      "attr.menu.close": "Cerrar menú",
+      "hero.eyebrow": "Concienciación · Síndrome de Guillain-Barré",
+      "hero.title": "Cada paso cuenta.",
+      "hero.title.grad": "Ningún camino se recorre solo.",
+      "hero.lead": "El Síndrome de Guillain-Barré puede cambiar la vida de una persona en cuestión de días. Informarse, visibilizar y apoyar es el primer paso para que nadie enfrente esta enfermedad en soledad.",
+      "hero.cta.conocer": "Conocer el SGB",
+      "hero.cta.ayuda": "Cómo ayudar",
+      "hero.stat1.value": "1–2",
+      "hero.stat1.label": "casos por cada 100.000 personas al año",
+      "hero.stat2.value": "~3",
+      "hero.stat2.label": "semanas de fase aguda habitual",
+      "hero.stat3.value": "85%",
+      "hero.stat3.label": "logra una recuperación favorable",
+      "attr.ribbon": "Cinta de concienciación",
+      "attr.scroll": "Bajar a la siguiente sección",
+      "quees.kicker": "¿Qué es?",
+      "quees.title": "El Síndrome de Guillain-Barré",
+      "quees.lead": "Es una enfermedad neurológica poco frecuente en la que el sistema inmunitario del propio cuerpo ataca por error parte del sistema nervioso periférico, afectando los nervios fuera del cerebro y la médula.",
+      "quees.card1.title": "Origen autoinmune",
+      "quees.card1.text": "El sistema inmunitario ataca los nervios periféricos, a menudo semanas después de una infección respiratoria o gastrointestinal.",
+      "quees.card2.title": "Debilidad ascendente",
+      "quees.card2.text": "La debilidad suele empezar en las piernas y puede extenderse a los brazos y la parte superior del cuerpo.",
+      "quees.card3.title": "Recuperación posible",
+      "quees.card3.text": "Con diagnóstico precoz y tratamiento adecuado, la mayoría de las personas logran una recuperación favorable.",
+      "quees.callout.strong": "Aviso:",
+      "quees.callout.text": "esta web tiene un fin exclusivamente divulgativo y de concienciación. No sustituye en ningún caso el consejo, diagnóstico ni tratamiento médico profesional. Ante cualquier síntoma, consulta con un profesional sanitario.",
+      "sintomas.kicker": "Señales de alerta",
+      "sintomas.title": "Síntomas más frecuentes",
+      "sintomas.lead": "Los síntomas pueden progresar rápidamente. Reconocerlos a tiempo es clave para buscar atención médica de inmediato.",
+      "sintomas.s1.title": "Hormigueo y debilidad",
+      "sintomas.s1.text": "Sensación de pinchazos u hormigueo que suele empezar en los pies y las piernas.",
+      "sintomas.s2.title": "Dificultad para caminar",
+      "sintomas.s2.text": "Pérdida de fuerza, inestabilidad al caminar o subir escaleras, con riesgo de caídas.",
+      "sintomas.s3.title": "Débil en brazos y rostro",
+      "sintomas.s3.text": "La debilidad puede extenderse a los brazos y los músculos faciales, dificultando moverse o hablar.",
+      "sintomas.s4.title": "Dificultad respiratoria",
+      "sintomas.s4.text": "En casos graves, la debilidad afecta a los músculos respiratorios y requiere atención de urgencia.",
+      "sintomas.s5.title": "Dolor o calambres",
+      "sintomas.s5.text": "Molestias, dolor tipo punzante o calambres que pueden empeorar, sobre todo, por la noche.",
+      "sintomas.s6.title": "Alteraciones autonómicas",
+      "sintomas.s6.text": "Cambios en el ritmo del corazón, la tensión arterial o la digestión en los casos más severos.",
+      "conci.kicker": "Por qué importa",
+      "conci.title": "Concienciar salva la calidad de vida",
+      "conci.p1": "El Síndrome de Guillain-Barré es poco frecuente, pero cuando aparece puede ser grave y progresar en días. Cuanto antes se reconozcan las señales, antes se inicia el tratamiento y mejor es el pronóstico.",
+      "conci.p2.a": "La concienciación también combate el aislamiento: ayuda a pacientes y familias a entender que ",
+      "conci.p2.strong": "no están solos",
+      "conci.p2.b": "a encontrar redes de apoyo y a reivindicar una investigación y unos cuidados dignos.",
+      "conci.check1": "Diagnóstico precoz y tratamiento a tiempo",
+      "conci.check2": "Redes de apoyo para pacientes y familias",
+      "conci.check3": "Mayor visibilidad e investigación médica",
+      "conci.check4": "Lucha contra el desconocimiento y la soledad",
+      "conci.stat1.value": "92%",
+      "conci.stat1.label": "de casos requiere hospitalización",
+      "conci.stat2.value": "60%",
+      "conci.stat2.label": "puede precisar cuidados intensivos",
+      "conci.stat3.value": "85%",
+      "conci.stat3.label": "logra una recuperación favorable",
+      "conci.note": "Datos orientativos con fines divulgativos.",
+      "merchan.kicker": "Merchandising solidario",
+      "merchan.title": "Lleva la causa contigo",
+      "merchan.lead": "Cada prenda es una forma de visibilizar el SGB. Una parte de cada compra se destina a iniciativas de apoyo e investigación.",
+      "merchan.badge": "Solidario",
+      "merchan.p1.title": "Camiseta «Cinta SGB»",
+      "merchan.p1.text": "Algodón 100% orgánico. Diseño con la cinta de concienciación.",
+      "merchan.p1.add": "Añadir",
+      "merchan.p2.title": "Gorra «Visibilidad»",
+      "merchan.p2.text": "Visera curva, ajustable. Bordado de la cinta SGB en el frontal.",
+      "merchan.p2.add": "Añadir",
+      "merchan.p3.title": "Pulsera «Unidos»",
+      "merchan.p3.text": "Silicona suave con la cinta de concienciación grabada.",
+      "merchan.p3.add": "Añadir",
+      "merchan.p4.title": "Tote Bag «Camino»",
+      "merchan.p4.text": "Bolsa de tela reutilizable. Lema de la causa en el centro.",
+      "merchan.p4.add": "Añadir",
+      "merchan.p4.slogan": "NINGÚN CAMINO SE RECORRE SOLO",
+      "merchan.p5.title": "Sudadera «Fuerza»",
+      "merchan.p5.text": "Capucha y forro polar. Bordado discreto de la cinta SGB.",
+      "merchan.p5.add": "Añadir",
+      "merchan.p6.title": "Pin «Cinta SGB»",
+      "merchan.p6.text": "Esmalte metálico. Perfecto para chaquetas y mochilas.",
+      "merchan.p6.add": "Añadir",
+      "ayuda.kicker": "Tu granito de arena",
+      "ayuda.title": "Cómo puedes ayudar",
+      "ayuda.lead": "Pequeñas acciones generan un gran impacto en la vida de quienes viven el SGB y de sus familias.",
+      "ayuda.h1.title": "Compra solidaria",
+      "ayuda.h1.text": "Un porcentaje de cada prenda financia proyectos de apoyo e investigación.",
+      "ayuda.h1.link": "Ver tienda",
+      "ayuda.h2.title": "Difunde el mensaje",
+      "ayuda.h2.text": "Comparte la información con tu entorno: visibilizar es el primer paso para ayudar.",
+      "ayuda.h2.link": "Saber más",
+      "ayuda.h3.title": "Acompaña",
+      "ayuda.h3.text": "Escucha y apoya a pacientes y familias. Una red de apoyo reduce el aislamiento.",
+      "ayuda.h3.link": "Conoce la causa",
+      "ayuda.cta.title": "Únete al movimiento por la concienciación del SGB",
+      "ayuda.cta.text": "Cada voz suma. Cada gesto cuenta. Cada paso acerca la esperanza.",
+      "ayuda.cta.btn": "Explorar merchandising",
+      "footer.brand": "Concienciación del Síndrome de Guillain-Barré. Información, apoyo y merchandising solidario.",
+      "footer.col.nav": "Navegación",
+      "footer.col.imple": "Implicarse",
+      "footer.col.follow": "Síguenos",
+      "footer.link.cause": "La causa",
+      "footer.bottom": "SGB · Proyecto de concienciación. Contenido divulgativo, no médico.",
+      "footer.legal": "Hecho con esperanza para visibilizar el Síndrome de Guillain-Barré.",
+      "attr.social.ig": "Instagram",
+      "attr.social.fb": "Facebook",
+      "attr.social.x": "X / Twitter",
+      "lang.aria": "Cambiar idioma",
+      "attr.lang.menu": "Idiomas",
+      "lang.name.es": "Español",
+      "lang.name.en": "English",
+      "lang.name.de": "Deutsch",
+      "lang.name.fr": "Français",
+      "toast.added": "Añadido: ",
+      "toast.empty": "Tu carrito está vacío. ¡Explora la tienda solidaria!",
+      "toast.count": "Llevas {n} artículo(s) en el carrito solidario.",
+      "meta.og.locale": "es_ES",
+      "meta.og.imagealt": "Cinta de concienciación del Síndrome de Guillain-Barré sobre fondo teal.",
+      "faq.kicker": "Preguntas frecuentes",
+      "faq.title": "Todo lo que necesitas saber sobre el SGB",
+      "faq.lead": "Respuestas claras y divulgativas a las dudas más habituales sobre el Síndrome de Guillain-Barré.",
+      "faq.q1": "¿Qué es el Síndrome de Guillain-Barré?",
+      "faq.a1": "Es una enfermedad neurológica poco frecuente en la que el sistema inmunitario ataca por error los nervios periféricos. Provoca debilidad muscular que suele empezar en las piernas y ascender, y puede progresar en cuestión de días.",
+      "faq.q2": "¿Cuáles son los primeros síntomas?",
+      "faq.a2": "Lo habitual es hormigueo y debilidad en piernas y pies, dificultad para caminar o subir escaleras y, en casos más graves, debilidad en brazos, rostro y músculos respiratorios. Ante estos signos, busca atención médica de inmediato.",
+      "faq.q3": "¿Es frecuente el SGB?",
+      "faq.a3": "No. Es una enfermedad rara, con una incidencia estimada de 1 a 2 casos por cada 100.000 personas al año. Puede afectar a personas de cualquier edad.",
+      "faq.q4": "¿Tiene tratamiento?",
+      "faq.a4": "Sí. Con diagnóstico precoz existen tratamientos que ayudan a acortar la fase aguda, como la inmunoglobulina intravenosa y la plasmaféresis, complementados después con rehabilitación.",
+      "faq.q5": "¿Cuál es el pronóstico?",
+      "faq.a5": "La mayoría evoluciona hacia una recuperación favorable (alrededor del 85 %), aunque puede durar meses y algunas personas conservan secuelas. El seguimiento médico y la rehabilitación son clave.",
+      "faq.q6": "¿Esta web sustituye a la consulta médica?",
+      "faq.a6": "No. El contenido es divulgativo y de concienciación, y no sustituye el consejo, el diagnóstico ni el tratamiento médico profesional. Ante cualquier síntoma o duda, consulta con un profesional sanitario."
+    },
+
+    /* ---------- English ---------- */
+    en: {
+      "meta.title": "GBS · Guillain-Barré Syndrome Awareness",
+      "meta.description": "Guillain-Barré Syndrome (GBS): an awareness website. Information, symptoms, how to help and solidarity merchandise. Join the cause.",
+      "meta.og.title": "GBS · Guillain-Barré Syndrome Awareness",
+      "meta.og.description": "Information, support and solidarity merchandise to raise the visibility of Guillain-Barré Syndrome.",
+      "skip.content": "Skip to content",
+      "brand.aria": "Home - GBS",
+      "nav.que-es": "What it is",
+      "nav.sintomas": "Symptoms",
+      "nav.concienciacion": "Awareness",
+      "nav.merchan": "Merchandise",
+      "nav.ayuda": "How to help",
+      "cta.tienda": "Solidarity shop",
+      "attr.cart": "Merchandise cart",
+      "attr.menu.open": "Open menu",
+      "attr.menu.close": "Close menu",
+      "hero.eyebrow": "Awareness · Guillain-Barré Syndrome",
+      "hero.title": "Every step counts.",
+      "hero.title.grad": "No journey is walked alone.",
+      "hero.lead": "Guillain-Barré Syndrome can change a person's life in a matter of days. Learning about it, raising awareness and showing support is the first step so no one faces this illness alone.",
+      "hero.cta.conocer": "Learn about GBS",
+      "hero.cta.ayuda": "How to help",
+      "hero.stat1.value": "1–2",
+      "hero.stat1.label": "cases per 100,000 people each year",
+      "hero.stat2.value": "~3",
+      "hero.stat2.label": "weeks of usual acute phase",
+      "hero.stat3.value": "85%",
+      "hero.stat3.label": "achieve a favourable recovery",
+      "attr.ribbon": "Awareness ribbon",
+      "attr.scroll": "Go down to the next section",
+      "quees.kicker": "What is it?",
+      "quees.title": "Guillain-Barré Syndrome",
+      "quees.lead": "It is a rare neurological disease in which the body's own immune system mistakenly attacks part of the peripheral nervous system, affecting the nerves outside the brain and spinal cord.",
+      "quees.card1.title": "Autoimmune origin",
+      "quees.card1.text": "The immune system attacks the peripheral nerves, often weeks after a respiratory or gastrointestinal infection.",
+      "quees.card2.title": "Ascending weakness",
+      "quees.card2.text": "Weakness usually starts in the legs and may spread to the arms and upper body.",
+      "quees.card3.title": "Recovery is possible",
+      "quees.card3.text": "With early diagnosis and proper treatment, most people achieve a favourable recovery.",
+      "quees.callout.strong": "Note:",
+      "quees.callout.text": "this website is purely informational and for awareness purposes. It never replaces professional medical advice, diagnosis or treatment. If you notice any symptoms, consult a healthcare professional.",
+      "sintomas.kicker": "Warning signs",
+      "sintomas.title": "Most common symptoms",
+      "sintomas.lead": "Symptoms can progress quickly. Recognising them in time is key to seeking medical attention immediately.",
+      "sintomas.s1.title": "Tingling and weakness",
+      "sintomas.s1.text": "A sensation of pins and needles or tingling that usually starts in the feet and legs.",
+      "sintomas.s2.title": "Difficulty walking",
+      "sintomas.s2.text": "Loss of strength, unsteadiness when walking or climbing stairs, with a risk of falls.",
+      "sintomas.s3.title": "Weakness in arms and face",
+      "sintomas.s3.text": "Weakness may spread to the arms and facial muscles, making it hard to move or speak.",
+      "sintomas.s4.title": "Breathing difficulty",
+      "sintomas.s4.text": "In severe cases, weakness affects the breathing muscles and requires urgent care.",
+      "sintomas.s5.title": "Pain or cramps",
+      "sintomas.s5.text": "Discomfort, sharp pain or cramps that may get worse, especially at night.",
+      "sintomas.s6.title": "Autonomic changes",
+      "sintomas.s6.text": "Changes in heart rate, blood pressure or digestion in the most severe cases.",
+      "conci.kicker": "Why it matters",
+      "conci.title": "Awareness saves quality of life",
+      "conci.p1": "Guillain-Barré Syndrome is rare, but when it appears it can be serious and progress within days. The sooner the signs are recognised, the earlier treatment begins and the better the prognosis.",
+      "conci.p2.a": "Awareness also fights isolation: it helps patients and families understand that ",
+      "conci.p2.strong": "they are not alone",
+      "conci.p2.b": "to find support networks and to advocate for dignified research and care.",
+      "conci.check1": "Early diagnosis and timely treatment",
+      "conci.check2": "Support networks for patients and families",
+      "conci.check3": "Greater visibility and medical research",
+      "conci.check4": "Fighting ignorance and loneliness",
+      "conci.stat1.value": "92%",
+      "conci.stat1.label": "of cases require hospitalisation",
+      "conci.stat2.value": "60%",
+      "conci.stat2.label": "may need intensive care",
+      "conci.stat3.value": "85%",
+      "conci.stat3.label": "achieve a favourable recovery",
+      "conci.note": "Indicative data for informational purposes.",
+      "merchan.kicker": "Solidarity merchandise",
+      "merchan.title": "Wear the cause",
+      "merchan.lead": "Every garment is a way to make GBS visible. A portion of each purchase goes to support and research initiatives.",
+      "merchan.badge": "Solidarity",
+      "merchan.p1.title": "«GBS Ribbon» T-shirt",
+      "merchan.p1.text": "100% organic cotton. Design featuring the awareness ribbon.",
+      "merchan.p1.add": "Add",
+      "merchan.p2.title": "«Visibility» Cap",
+      "merchan.p2.text": "Curved, adjustable visor. GBS ribbon embroidered on the front.",
+      "merchan.p2.add": "Add",
+      "merchan.p3.title": "«United» Bracelet",
+      "merchan.p3.text": "Soft silicone with the awareness ribbon engraved.",
+      "merchan.p3.add": "Add",
+      "merchan.p4.title": "«Journey» Tote Bag",
+      "merchan.p4.text": "Reusable cloth bag. The cause's motto in the centre.",
+      "merchan.p4.add": "Add",
+      "merchan.p4.slogan": "NO JOURNEY IS WALKED ALONE",
+      "merchan.p5.title": "«Strength» Hoodie",
+      "merchan.p5.text": "Hood and fleece lining. Discreet GBS ribbon embroidery.",
+      "merchan.p5.add": "Add",
+      "merchan.p6.title": "«GBS Ribbon» Pin",
+      "merchan.p6.text": "Metal enamel. Perfect for jackets and backpacks.",
+      "merchan.p6.add": "Add",
+      "ayuda.kicker": "Your grain of sand",
+      "ayuda.title": "How you can help",
+      "ayuda.lead": "Small actions make a big impact on the lives of those living with GBS and their families.",
+      "ayuda.h1.title": "Solidarity purchase",
+      "ayuda.h1.text": "A percentage of every garment funds support and research projects.",
+      "ayuda.h1.link": "See shop",
+      "ayuda.h2.title": "Spread the message",
+      "ayuda.h2.text": "Share the information with your circle: raising visibility is the first step to helping.",
+      "ayuda.h2.link": "Learn more",
+      "ayuda.h3.title": "Stand by them",
+      "ayuda.h3.text": "Listen to and support patients and families. A support network reduces isolation.",
+      "ayuda.h3.link": "Discover the cause",
+      "ayuda.cta.title": "Join the movement for GBS awareness",
+      "ayuda.cta.text": "Every voice adds up. Every gesture counts. Every step brings hope closer.",
+      "ayuda.cta.btn": "Explore merchandise",
+      "footer.brand": "Guillain-Barré Syndrome awareness. Information, support and solidarity merchandise.",
+      "footer.col.nav": "Navigation",
+      "footer.col.imple": "Get involved",
+      "footer.col.follow": "Follow us",
+      "footer.link.cause": "The cause",
+      "footer.bottom": "GBS · Awareness project. Informational content, not medical.",
+      "footer.legal": "Made with hope to raise the visibility of Guillain-Barré Syndrome.",
+      "attr.social.ig": "Instagram",
+      "attr.social.fb": "Facebook",
+      "attr.social.x": "X / Twitter",
+      "lang.aria": "Change language",
+      "attr.lang.menu": "Languages",
+      "lang.name.es": "Español",
+      "lang.name.en": "English",
+      "lang.name.de": "Deutsch",
+      "lang.name.fr": "Français",
+      "toast.added": "Added: ",
+      "toast.empty": "Your cart is empty. Explore the solidarity shop!",
+      "toast.count": "You have {n} item(s) in the solidarity cart.",
+      "meta.og.locale": "en_US",
+      "meta.og.imagealt": "Guillain-Barré Syndrome awareness ribbon on a teal background.",
+      "faq.kicker": "Frequently asked questions",
+      "faq.title": "Everything you need to know about GBS",
+      "faq.lead": "Clear, informative answers to the most common questions about Guillain-Barré Syndrome.",
+      "faq.q1": "What is Guillain-Barré Syndrome?",
+      "faq.a1": "It is a rare neurological disorder in which the immune system mistakenly attacks the peripheral nerves. It causes muscle weakness that usually starts in the legs and moves upward, and it can progress in a matter of days.",
+      "faq.q2": "What are the first symptoms?",
+      "faq.a2": "It usually begins with tingling and weakness in the legs and feet, difficulty walking or climbing stairs and, in more severe cases, weakness in the arms, face and breathing muscles. If you notice these signs, seek medical attention immediately.",
+      "faq.q3": "Is GBS common?",
+      "faq.a3": "No. It is a rare disease, with an estimated incidence of 1 to 2 cases per 100,000 people per year. It can affect people of any age.",
+      "faq.q4": "Is there a treatment?",
+      "faq.a4": "Yes. With early diagnosis there are treatments that help shorten the acute phase, such as intravenous immunoglobulin and plasma exchange, later complemented with rehabilitation.",
+      "faq.q5": "What is the prognosis?",
+      "faq.a5": "Most people progress toward a favourable recovery (around 85%), although it can take months and some people retain lingering effects. Medical follow-up and rehabilitation are key.",
+      "faq.q6": "Does this website replace medical advice?",
+      "faq.a6": "No. The content is informative and for awareness purposes, and it does not replace professional medical advice, diagnosis or treatment. If you have any symptoms or questions, consult a healthcare professional."
+    },
+
+    /* ---------- Deutsch ---------- */
+    de: {
+      "meta.title": "GBS · Aufklärung zum Guillain-Barré-Syndrom",
+      "meta.description": "Guillain-Barré-Syndrom (GBS): eine Aufklärungs-Website. Informationen, Symptome, wie man hilft und Solidaritäts-Merchandise. Mach mit.",
+      "meta.og.title": "GBS · Aufklärung zum Guillain-Barré-Syndrom",
+      "meta.og.description": "Informationen, Unterstützung und Solidaritäts-Merchandise, um das Guillain-Barré-Syndrom sichtbar zu machen.",
+      "skip.content": "Zum Inhalt springen",
+      "brand.aria": "Startseite - GBS",
+      "nav.que-es": "Was es ist",
+      "nav.sintomas": "Symptome",
+      "nav.concienciacion": "Aufklärung",
+      "nav.merchan": "Merchandise",
+      "nav.ayuda": "Wie helfen",
+      "cta.tienda": "Solidaritäts-Shop",
+      "attr.cart": "Merchandise-Warenkorb",
+      "attr.menu.open": "Menü öffnen",
+      "attr.menu.close": "Menü schließen",
+      "hero.eyebrow": "Aufklärung · Guillain-Barré-Syndrom",
+      "hero.title": "Jeder Schritt zählt.",
+      "hero.title.grad": "Kein Weg wird allein gegangen.",
+      "hero.lead": "Das Guillain-Barré-Syndrom kann das Leben eines Menschen innerhalb weniger Tage verändern. Sich informieren, sichtbar machen und unterstützen ist der erste Schritt, damit niemand diese Krankheit allein durchstehen muss.",
+      "hero.cta.conocer": "Mehr über GBS",
+      "hero.cta.ayuda": "Wie helfen",
+      "hero.stat1.value": "1–2",
+      "hero.stat1.label": "Fälle pro 100.000 Menschen pro Jahr",
+      "hero.stat2.value": "~3",
+      "hero.stat2.label": "Wochen der üblichen akuten Phase",
+      "hero.stat3.value": "85%",
+      "hero.stat3.label": "erreichen eine günstige Genesung",
+      "attr.ribbon": "Aufklärungsschleife",
+      "attr.scroll": "Zum nächsten Abschnitt nach unten",
+      "quees.kicker": "Was ist das?",
+      "quees.title": "Das Guillain-Barré-Syndrom",
+      "quees.lead": "Es ist eine seltene neurologische Erkrankung, bei der das körpereigene Immunsystem fälschlicherweise Teile des peripheren Nervensystems angreift und die Nerven außerhalb von Gehirn und Rückenmark betrifft.",
+      "quees.card1.title": "Autoimmunerkrankung",
+      "quees.card1.text": "Das Immunsystem greift die peripheren Nerven an, oft Wochen nach einer Atemwegs- oder Magen-Darm-Infektion.",
+      "quees.card2.title": "Aufsteigende Schwäche",
+      "quees.card2.text": "Die Schwäche beginnt meist in den Beinen und kann sich auf Arme und den oberen Körper ausbreiten.",
+      "quees.card3.title": "Genesung ist möglich",
+      "quees.card3.text": "Mit früher Diagnose und richtiger Behandlung erreichen die meisten Menschen eine günstige Genesung.",
+      "quees.callout.strong": "Hinweis:",
+      "quees.callout.text": "Diese Website dient ausschließlich Aufklärungs- und Informationszwecken. Sie ersetzt in keinem Fall professionelle medizinische Beratung, Diagnose oder Behandlung. Bei Symptomen wenden Sie sich an eine Fachkraft.",
+      "sintomas.kicker": "Warnsignale",
+      "sintomas.title": "Häufigste Symptome",
+      "sintomas.lead": "Symptome können schnell voranschreiten. Sie rechtzeitig zu erkennen ist entscheidend, um sofort medizinische Hilfe zu holen.",
+      "sintomas.s1.title": "Kribbeln und Schwäche",
+      "sintomas.s1.text": "Ein Gefühl von Kribbeln oder Ameisenlaufen, das meist in Füßen und Beinen beginnt.",
+      "sintomas.s2.title": "Schwierigkeiten beim Gehen",
+      "sintomas.s2.text": "Kraftverlust, Unsicherheit beim Gehen oder Treppensteigen mit Sturzgefahr.",
+      "sintomas.s3.title": "Schwäche in Armen und Gesicht",
+      "sintomas.s3.text": "Die Schwäche kann sich auf Arme und Gesichtsmuskeln ausbreiten und Bewegen oder Sprechen erschweren.",
+      "sintomas.s4.title": "Atembeschwerden",
+      "sintomas.s4.text": "In schweren Fällen betrifft die Schwäche die Atemmuskulatur und erfordert Notfallversorgung.",
+      "sintomas.s5.title": "Schmerzen oder Krämpfe",
+      "sintomas.s5.text": "Unbehagen, stechende Schmerzen oder Krämpfe, die sich vor allem nachts verschlechtern können.",
+      "sintomas.s6.title": "Autonome Störungen",
+      "sintomas.s6.text": "Veränderungen von Herzrhythmus, Blutdruck oder Verdauung in den schwersten Fällen.",
+      "conci.kicker": "Warum es wichtig ist",
+      "conci.title": "Aufklärung rettet Lebensqualität",
+      "conci.p1": "Das Guillain-Barré-Syndrom ist selten, aber wenn es auftritt, kann es schwer verlaufen und sich innerhalb von Tagen verschlimmern. Je früher die Anzeichen erkannt werden, desto früher beginnt die Behandlung und desto besser ist die Prognose.",
+      "conci.p2.a": "Aufklärung bekämpft auch die Isolation: Sie hilft Patienten und Familien zu verstehen, dass ",
+      "conci.p2.strong": "sie nicht allein sind",
+      "conci.p2.b": "Unterstützungsnetzwerke zu finden und sich für würdige Forschung und Pflege einzusetzen.",
+      "conci.check1": "Frühe Diagnose und rechtzeitige Behandlung",
+      "conci.check2": "Unterstützungsnetzwerke für Patienten und Familien",
+      "conci.check3": "Mehr Sichtbarkeit und medizinische Forschung",
+      "conci.check4": "Kampf gegen Unwissenheit und Einsamkeit",
+      "conci.stat1.value": "92%",
+      "conci.stat1.label": "der Fälle erfordern Krankenhausaufenthalt",
+      "conci.stat2.value": "60%",
+      "conci.stat2.label": "können Intensivpflege benötigen",
+      "conci.stat3.value": "85%",
+      "conci.stat3.label": "erreichen eine günstige Genesung",
+      "conci.note": "Orientierungswerte zu Aufklärungszwecken.",
+      "merchan.kicker": "Solidaritäts-Merchandise",
+      "merchan.title": "Trag die Sache mit dir",
+      "merchan.lead": "Jedes Kleidungsstück macht GBS sichtbar. Ein Teil jedes Einkaufs fließt in Unterstützung und Forschung.",
+      "merchan.badge": "Solidarisch",
+      "merchan.p1.title": "T-Shirt «GBS-Schleife»",
+      "merchan.p1.text": "100% Bio-Baumwolle. Design mit der Aufklärungsschleife.",
+      "merchan.p1.add": "Hinzufügen",
+      "merchan.p2.title": "Kappe «Sichtbarkeit»",
+      "merchan.p2.text": "Gebogene, verstellbare Kappe. GBS-Schleife vorne bestickt.",
+      "merchan.p2.add": "Hinzufügen",
+      "merchan.p3.title": "Armband «Vereint»",
+      "merchan.p3.text": "Weiches Silikon mit gravierter Aufklärungsschleife.",
+      "merchan.p3.add": "Hinzufügen",
+      "merchan.p4.title": "Tragetasche «Weg»",
+      "merchan.p4.text": "Wiederverwendbare Stofftasche. Motto der Aktion in der Mitte.",
+      "merchan.p4.add": "Hinzufügen",
+      "merchan.p4.slogan": "KEIN WEG WIRD ALLEIN GEGANGEN",
+      "merchan.p5.title": "Kapuzenpullover «Stärke»",
+      "merchan.p5.text": "Kapuze und Fleece-Futter. Dezente GBS-Schleifen-Stickerei.",
+      "merchan.p5.add": "Hinzufügen",
+      "merchan.p6.title": "Anstecker «GBS-Schleife»",
+      "merchan.p6.text": "Metall-Emaille. Perfekt für Jacken und Rucksäcke.",
+      "merchan.p6.add": "Hinzufügen",
+      "ayuda.kicker": "Dein kleiner Beitrag",
+      "ayuda.title": "Wie du helfen kannst",
+      "ayuda.lead": "Kleine Taten bewirken große Wirkung im Leben derer, die mit GBS leben, und ihrer Familien.",
+      "ayuda.h1.title": "Solidarischer Einkauf",
+      "ayuda.h1.text": "Ein Prozentsatz jedes Kleidungsstücks finanziert Unterstützungs- und Forschungsprojekte.",
+      "ayuda.h1.link": "Zum Shop",
+      "ayuda.h2.title": "Verbreite die Botschaft",
+      "ayuda.h2.text": "Teile die Informationen mit deinem Umfeld: Sichtbarkeit ist der erste Schritt zur Hilfe.",
+      "ayuda.h2.link": "Mehr erfahren",
+      "ayuda.h3.title": "Begleite sie",
+      "ayuda.h3.text": "Höre Patienten und Familien zu und unterstütze sie. Ein Unterstützungsnetzwerk verringert die Isolation.",
+      "ayuda.h3.link": "Die Sache kennenlernen",
+      "ayuda.cta.title": "Werde Teil der Bewegung für GBS-Aufklärung",
+      "ayuda.cta.text": "Jede Stimme zählt. Jede Geste wirkt. Jeder Schritt bringt Hoffnung näher.",
+      "ayuda.cta.btn": "Merchandise entdecken",
+      "footer.brand": "Aufklärung zum Guillain-Barré-Syndrom. Informationen, Unterstützung und Solidaritäts-Merchandise.",
+      "footer.col.nav": "Navigation",
+      "footer.col.imple": "Mitmachen",
+      "footer.col.follow": "Folge uns",
+      "footer.link.cause": "Die Sache",
+      "footer.bottom": "GBS · Aufklärungsprojekt. Informative Inhalte, nicht medizinisch.",
+      "footer.legal": "Mit Hoffnung gemacht, um das Guillain-Barré-Syndrom sichtbar zu machen.",
+      "attr.social.ig": "Instagram",
+      "attr.social.fb": "Facebook",
+      "attr.social.x": "X / Twitter",
+      "lang.aria": "Sprache ändern",
+      "attr.lang.menu": "Sprachen",
+      "lang.name.es": "Español",
+      "lang.name.en": "English",
+      "lang.name.de": "Deutsch",
+      "lang.name.fr": "Français",
+      "toast.added": "Hinzugefügt: ",
+      "toast.empty": "Dein Warenkorb ist leer. Entdecke den Solidaritäts-Shop!",
+      "toast.count": "Du hast {n} Artikel im Solidaritäts-Warenkorb.",
+      "meta.og.locale": "de_DE",
+      "meta.og.imagealt": "Bewusstseinsband des Guillain-Barré-Syndroms auf türkisem Hintergrund.",
+      "faq.kicker": "Häufige Fragen",
+      "faq.title": "Alles, was Sie über GBS wissen müssen",
+      "faq.lead": "Klare, verständliche Antworten auf die häufigsten Fragen zum Guillain-Barré-Syndrom.",
+      "faq.q1": "Was ist das Guillain-Barré-Syndrom?",
+      "faq.a1": "Es ist eine seltene neurologische Erkrankung, bei der das Immunsystem fälschlicherweise die peripheren Nerven angreift. Sie verursacht Muskelschwäche, die meist in den Beinen beginnt und aufsteigt, und kann sich innerhalb von Tagen verschlimmern.",
+      "faq.q2": "Was sind die ersten Symptome?",
+      "faq.a2": "Meist beginnt es mit Kribbeln und Schwäche in Beinen und Füßen, Schwierigkeiten beim Gehen oder Treppensteigen und, in schwereren Fällen, Schwäche in Armen, Gesicht und Atemmuskulatur. Bei diesen Zeichen suchen Sie sofort ärztliche Hilfe.",
+      "faq.q3": "Ist GBS häufig?",
+      "faq.a3": "Nein. Es ist eine seltene Krankheit mit einer geschätzten Inzidenz von 1 bis 2 Fällen pro 100.000 Personen pro Jahr. Sie kann Menschen jeden Alters betreffen.",
+      "faq.q4": "Gibt es eine Behandlung?",
+      "faq.a4": "Ja. Bei früher Diagnose gibt es Behandlungen, die helfen, die akute Phase zu verkürzen, wie intravenöse Immunglobuline und Plasmapherese, später ergänzt durch Rehabilitation.",
+      "faq.q5": "Wie ist die Prognose?",
+      "faq.a5": "Die meisten Menschen erholen sich günstig (etwa 85 %), obwohl es Monate dauern kann und manche Menschen Restbeschwerden behalten. Ärztliche Begleitung und Rehabilitation sind entscheidend.",
+      "faq.q6": "Ersetzt diese Website die ärztliche Beratung?",
+      "faq.a6": "Nein. Die Inhalte dienen der Aufklärung und Sensibilisierung und ersetzen keine professionelle ärztliche Beratung, Diagnose oder Behandlung. Bei Symptomen oder Fragen wenden Sie sich an eine Fachkraft."
+    },
+
+    /* ---------- Français ---------- */
+    fr: {
+      "meta.title": "SGB · Sensibilisation au Syndrome de Guillain-Barré",
+      "meta.description": "Syndrome de Guillain-Barré (SGB) : site de sensibilisation. Informations, symptômes, comment aider et merchandising solidaire. Rejoignez la cause.",
+      "meta.og.title": "SGB · Sensibilisation au Syndrome de Guillain-Barré",
+      "meta.og.description": "Informations, soutien et merchandising solidaire pour rendre visible le Syndrome de Guillain-Barré.",
+      "skip.content": "Aller au contenu",
+      "brand.aria": "Accueil - SGB",
+      "nav.que-es": "Qu'est-ce que c'est",
+      "nav.sintomas": "Symptômes",
+      "nav.concienciacion": "Sensibilisation",
+      "nav.merchan": "Merchandising",
+      "nav.ayuda": "Comment aider",
+      "cta.tienda": "Boutique solidaire",
+      "attr.cart": "Panier de merchandising",
+      "attr.menu.open": "Ouvrir le menu",
+      "attr.menu.close": "Fermer le menu",
+      "hero.eyebrow": "Sensibilisation · Syndrome de Guillain-Barré",
+      "hero.title": "Chaque pas compte.",
+      "hero.title.grad": "Aucun chemin ne se parcourt seul.",
+      "hero.lead": "Le Syndrome de Guillain-Barré peut changer la vie d'une personne en quelques jours. S'informer, sensibiliser et soutenir est la première étape pour que personne ne vive cette maladie dans la solitude.",
+      "hero.cta.conocer": "Découvrir le SGB",
+      "hero.cta.ayuda": "Comment aider",
+      "hero.stat1.value": "1–2",
+      "hero.stat1.label": "cas pour 100 000 personnes par an",
+      "hero.stat2.value": "~3",
+      "hero.stat2.label": "semaines de phase aiguë habituelle",
+      "hero.stat3.value": "85%",
+      "hero.stat3.label": "obtiennent une récupération favorable",
+      "attr.ribbon": "Ruban de sensibilisation",
+      "attr.scroll": "Descendre à la section suivante",
+      "quees.kicker": "Qu'est-ce que c'est ?",
+      "quees.title": "Le Syndrome de Guillain-Barré",
+      "quees.lead": "C'est une maladie neurologique rare dans laquelle le système immunitaire du corps attaque par erreur une partie du système nerveux périphérique, touchant les nerfs en dehors du cerveau et de la moelle épinière.",
+      "quees.card1.title": "Origine auto-immune",
+      "quees.card1.text": "Le système immunitaire attaque les nerfs périphériques, souvent des semaines après une infection respiratoire ou gastro-intestinale.",
+      "quees.card2.title": "Faiblesse ascendante",
+      "quees.card2.text": "La faiblesse commence généralement par les jambes et peut s'étendre aux bras et au haut du corps.",
+      "quees.card3.title": "Récupération possible",
+      "quees.card3.text": "Avec un diagnostic précoce et un traitement adapté, la plupart des personnes obtiennent une récupération favorable.",
+      "quees.callout.strong": "Avertissement :",
+      "quees.callout.text": "ce site a une finalité exclusivement informative et de sensibilisation. Il ne remplace en aucun cas un avis, un diagnostic ou un traitement médical professionnel. En cas de symptômes, consultez un professionnel de santé.",
+      "sintomas.kicker": "Signaux d'alerte",
+      "sintomas.title": "Symptômes les plus fréquents",
+      "sintomas.lead": "Les symptômes peuvent évoluer rapidement. Les reconnaître à temps est essentiel pour consulter immédiatement.",
+      "sintomas.s1.title": "Fourmillements et faiblesse",
+      "sintomas.s1.text": "Sensation de picotements ou de fourmillements qui commence souvent par les pieds et les jambes.",
+      "sintomas.s2.title": "Difficulté à marcher",
+      "sintomas.s2.text": "Perte de force, instabilité en marchant ou en montant les escaliers, avec risque de chutes.",
+      "sintomas.s3.title": "Faiblesse des bras et du visage",
+      "sintomas.s3.text": "La faiblesse peut s'étendre aux bras et aux muscles du visage, rendant les mouvements ou la parole difficiles.",
+      "sintomas.s4.title": "Difficulté respiratoire",
+      "sintomas.s4.text": "Dans les cas graves, la faiblesse touche les muscles respiratoires et nécessite des soins d'urgence.",
+      "sintomas.s5.title": "Douleur ou crampes",
+      "sintomas.s5.text": "Inconfort, douleur aiguë ou crampes qui peuvent s'aggraver, surtout la nuit.",
+      "sintomas.s6.title": "Troubles autonomes",
+      "sintomas.s6.text": "Modifications du rythme cardiaque, de la tension artérielle ou de la digestion dans les cas les plus graves.",
+      "conci.kicker": "Pourquoi c'est important",
+      "conci.title": "Sensibiliser préserve la qualité de vie",
+      "conci.p1": "Le Syndrome de Guillain-Barré est rare, mais lorsqu'il apparaît, il peut être grave et évoluer en quelques jours. Plus tôt les signes sont reconnus, plus tôt le traitement commence et meilleur est le pronostic.",
+      "conci.p2.a": "La sensibilisation combat aussi l'isolement : elle aide les patients et les familles à comprendre qu'",
+      "conci.p2.strong": "ils ne sont pas seuls",
+      "conci.p2.b": "à trouver des réseaux de soutien et à revendiquer une recherche et des soins dignes.",
+      "conci.check1": "Diagnostic précoce et traitement à temps",
+      "conci.check2": "Réseaux de soutien pour les patients et les familles",
+      "conci.check3": "Plus de visibilité et de recherche médicale",
+      "conci.check4": "Lutter contre l'ignorance et la solitude",
+      "conci.stat1.value": "92%",
+      "conci.stat1.label": "des cas nécessitent une hospitalisation",
+      "conci.stat2.value": "60%",
+      "conci.stat2.label": "peuvent nécessiter des soins intensifs",
+      "conci.stat3.value": "85%",
+      "conci.stat3.label": "obtiennent une récupération favorable",
+      "conci.note": "Données indicatives à but informatif.",
+      "merchan.kicker": "Merchandising solidaire",
+      "merchan.title": "Portez la cause avec vous",
+      "merchan.lead": "Chaque vêtement est un moyen de rendre le SGB visible. Une partie de chaque achat finance des initiatives de soutien et de recherche.",
+      "merchan.badge": "Solidaire",
+      "merchan.p1.title": "T-shirt « Ruban SGB »",
+      "merchan.p1.text": "100 % coton biologique. Design avec le ruban de sensibilisation.",
+      "merchan.p1.add": "Ajouter",
+      "merchan.p2.title": "Casquette « Visibilité »",
+      "merchan.p2.text": "Visière courbe, ajustable. Ruban SGB brodé sur le devant.",
+      "merchan.p2.add": "Ajouter",
+      "merchan.p3.title": "Bracelet «Unis»",
+      "merchan.p3.text": "Silicone souple avec le ruban de sensibilisation gravé.",
+      "merchan.p3.add": "Ajouter",
+      "merchan.p4.title": "Tote Bag « Chemin »",
+      "merchan.p4.text": "Sac en tissu réutilisable. Devise de la cause au centre.",
+      "merchan.p4.add": "Ajouter",
+      "merchan.p4.slogan": "AUCUN CHEMIN NE SE PARCOURT SEUL",
+      "merchan.p5.title": "Sweat « Force »",
+      "merchan.p5.text": "Capuche et doublure polaire. Broderie discrète du ruban SGB.",
+      "merchan.p5.add": "Ajouter",
+      "merchan.p6.title": "Pin's « Ruban SGB »",
+      "merchan.p6.text": "Émail métallique. Parfait pour les vestes et les sacs à dos.",
+      "merchan.p6.add": "Ajouter",
+      "ayuda.kicker": "Votre petite pierre",
+      "ayuda.title": "Comment vous pouvez aider",
+      "ayuda.lead": "De petites actions ont un grand impact sur la vie de ceux qui vivent avec le SGB et de leurs familles.",
+      "ayuda.h1.title": "Achat solidaire",
+      "ayuda.h1.text": "Un pourcentage de chaque vêtement finance des projets de soutien et de recherche.",
+      "ayuda.h1.link": "Voir la boutique",
+      "ayuda.h2.title": "Diffusez le message",
+      "ayuda.h2.text": "Partagez l'information avec votre entourage : sensibiliser est la première étape pour aider.",
+      "ayuda.h2.link": "En savoir plus",
+      "ayuda.h3.title": "Accompagnez",
+      "ayuda.h3.text": "Écoutez et soutenez les patients et les familles. Un réseau de soutien réduit l'isolement.",
+      "ayuda.h3.link": "Découvrir la cause",
+      "ayuda.cta.title": "Rejoignez le mouvement de sensibilisation au SGB",
+      "ayuda.cta.text": "Chaque voix compte. Chaque geste a du poids. Chaque pas rapproche l'espoir.",
+      "ayuda.cta.btn": "Explorer le merchandising",
+      "footer.brand": "Sensibilisation au Syndrome de Guillain-Barré. Informations, soutien et merchandising solidaire.",
+      "footer.col.nav": "Navigation",
+      "footer.col.imple": "S'impliquer",
+      "footer.col.follow": "Suivez-nous",
+      "footer.link.cause": "La cause",
+      "footer.bottom": "SGB · Projet de sensibilisation. Contenu informatif, non médical.",
+      "footer.legal": "Fait avec espoir pour rendre visible le Syndrome de Guillain-Barré.",
+      "attr.social.ig": "Instagram",
+      "attr.social.fb": "Facebook",
+      "attr.social.x": "X / Twitter",
+      "lang.aria": "Changer de langue",
+      "attr.lang.menu": "Langues",
+      "lang.name.es": "Español",
+      "lang.name.en": "English",
+      "lang.name.de": "Deutsch",
+      "lang.name.fr": "Français",
+      "toast.added": "Ajouté : ",
+      "toast.empty": "Votre panier est vide. Découvrez la boutique solidaire !",
+      "toast.count": "Vous avez {n} article(s) dans le panier solidaire.",
+      "meta.og.locale": "fr_FR",
+      "meta.og.imagealt": "Ruban de sensibilisation au syndrome de Guillain-Barré sur fond sarcelle.",
+      "faq.kicker": "Questions fréquentes",
+      "faq.title": "Tout ce qu'il faut savoir sur le SGB",
+      "faq.lead": "Des réponses claires et vulgarisées aux questions les plus courantes sur le syndrome de Guillain-Barré.",
+      "faq.q1": "Qu'est-ce que le syndrome de Guillain-Barré ?",
+      "faq.a1": "C'est une maladie neurologique rare dans laquelle le système immunitaire attaque par erreur les nerfs périphériques. Elle provoque une faiblesse musculaire qui commence généralement dans les jambes et monte, et peut évoluer en quelques jours.",
+      "faq.q2": "Quels sont les premiers symptômes ?",
+      "faq.a2": "Le plus souvent, des picotements et une faiblesse dans les jambes et les pieds, des difficultés à marcher ou à monter des escaliers et, dans les cas plus graves, une faiblesse des bras, du visage et des muscles respiratoires. En présence de ces signes, consultez immédiatement un médecin.",
+      "faq.q3": "Le SGB est-il fréquent ?",
+      "faq.a3": "Non. C'est une maladie rare, avec une incidence estimée de 1 à 2 cas pour 100 000 personnes par an. Elle peut toucher des personnes de tout âge.",
+      "faq.q4": "Existe-t-il un traitement ?",
+      "faq.a4": "Oui. Avec un diagnostic précoce, des traitements aident à raccourcir la phase aiguë, comme les immunoglobulines intraveineuses et la plasmaphérèse, complétées ensuite par une rééducation.",
+      "faq.q5": "Quel est le pronostic ?",
+      "faq.a5": "La plupart des personnes évoluent vers une récupération favorable (environ 85 %), bien que cela puisse prendre des mois et que certaines gardent des séquelles. Le suivi médical et la rééducation sont essentiels.",
+      "faq.q6": "Ce site remplace-t-il la consultation médicale ?",
+      "faq.a6": "Non. Le contenu est vulgarisé et de sensibilisation ; il ne remplace pas les conseils, le diagnostic ni le traitement médical professionnel. En cas de symptômes ou de doute, consultez un professionnel de santé."
+    }
+  };
+
+  /* ---------- Utilidades ---------- */
+  function isSupported(lang) {
+    return SUPPORTED.indexOf(lang) !== -1;
+  }
+
+  function detectLang() {
+    var nav = navigator.languages ? navigator.languages[0] : (navigator.language || "");
+    var short = String(nav).toLowerCase().slice(0, 2);
+    return isSupported(short) ? short : "es";
+  }
+
+  function getStoredLang() {
+    try {
+      var v = window.localStorage.getItem(STORAGE_KEY);
+      if (isSupported(v)) return v;
+    } catch (e) {}
+    return null;
+  }
+
+  function storeLang(lang) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, lang);
+    } catch (e) {}
+  }
+
+  function t(key) {
+    var dict = translations[currentLang] || translations.es;
+    if (Object.prototype.hasOwnProperty.call(dict, key)) return dict[key];
+    if (Object.prototype.hasOwnProperty.call(translations.es, key)) return translations.es[key];
+    return key;
+  }
+
+  function setMeta(selector, attr, value) {
+    var el = doc.querySelector(selector);
+    if (el && value != null) el.setAttribute(attr, value);
+  }
+
+  /* ---------- Aplicar un idioma a todo el DOM ---------- */
+  function applyLanguage(lang) {
+    if (!isSupported(lang)) lang = "es";
+    currentLang = lang;
+    var dict = translations[lang];
+
+    var nodes = doc.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var key = el.getAttribute("data-i18n");
+      if (Object.prototype.hasOwnProperty.call(dict, key)) {
+        el.textContent = dict[key];
+      }
+    }
+
+    var attrNodes = doc.querySelectorAll("[data-i18n-attr]");
+    for (var j = 0; j < attrNodes.length; j++) {
+      var node = attrNodes[j];
+      var spec = node.getAttribute("data-i18n-attr");
+      if (!spec) continue;
+      var pairs = spec.split(",");
+      for (var k = 0; k < pairs.length; k++) {
+        var pair = pairs[k].split(":");
+        var name = pair[0].trim();
+        var akey = pair.slice(1).join(":").trim();
+        if (Object.prototype.hasOwnProperty.call(dict, akey)) {
+          node.setAttribute(name, dict[akey]);
+        }
+      }
+    }
+
+    doc.documentElement.lang = lang;
+    doc.title = dict["meta.title"];
+    setMeta('meta[name="description"]', "content", dict["meta.description"]);
+    setMeta('meta[property="og:title"]', "content", dict["meta.og.title"]);
+    setMeta('meta[property="og:description"]', "content", dict["meta.og.description"]);
+
+    updateSwitcherUI(lang);
+  }
+
+  /* ---------- Selector de idioma (UI) ---------- */
+  var langSwitch, langBtn, langMenu, langCurrent;
+
+  function updateSwitcherUI(lang) {
+    if (langCurrent) langCurrent.textContent = lang.toUpperCase();
+    if (!langMenu) return;
+    var opts = langMenu.querySelectorAll(".lang-option");
+    for (var i = 0; i < opts.length; i++) {
+      var opt = opts[i];
+      var isActive = opt.getAttribute("data-lang") === lang;
+      opt.classList.toggle("active", isActive);
+      opt.setAttribute("aria-selected", String(isActive));
+    }
+  }
+
+  function openMenu() {
+    if (!langMenu || !langBtn) return;
+    langMenu.classList.add("open");
+    langBtn.classList.add("open");
+    langBtn.setAttribute("aria-expanded", "true");
+  }
+
+  function closeMenu() {
+    if (!langMenu || !langBtn) return;
+    langMenu.classList.remove("open");
+    langBtn.classList.remove("open");
+    langBtn.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleMenu() {
+    if (langMenu && langMenu.classList.contains("open")) closeMenu();
+    else openMenu();
+  }
+
+  function setLanguage(lang) {
+    applyLanguage(lang);
+    storeLang(lang);
+    closeMenu();
+  }
+
+  function initSwitcher() {
+    langSwitch = doc.getElementById("langSwitch");
+    langBtn = doc.getElementById("langBtn");
+    langMenu = doc.getElementById("langMenu");
+    langCurrent = doc.getElementById("langCurrent");
+    if (!langBtn || !langMenu) return;
+
+    langBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    var opts = langMenu.querySelectorAll(".lang-option");
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].addEventListener("click", function () {
+        var lang = this.getAttribute("data-lang");
+        if (isSupported(lang)) setLanguage(lang);
+      });
+    }
+
+    doc.addEventListener("click", function (e) {
+      if (!langMenu.classList.contains("open")) return;
+      if (!e.target.closest("#langSwitch")) closeMenu();
+    });
+
+    doc.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
+  /* ---------- Arranque ---------- */
+  function init() {
+    var lang = getStoredLang() || detectLang();
+    initSwitcher();
+    applyLanguage(lang);
+  }
+
+  init();
+
+  /* ---------- API pública ---------- */
+  window.SGB_i18n = {
+    t: t,
+    applyLanguage: applyLanguage,
+    getLanguage: function () { return currentLang; },
+    supported: SUPPORTED.slice()
+  };
+})();
