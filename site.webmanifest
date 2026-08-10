@@ -1,0 +1,22 @@
+{
+  "name": "SGB · Concienciación del Síndrome de Guillain-Barré",
+  "short_name": "SGB",
+  "description": "Concienciación del Síndrome de Guillain-Barré: información, apoyo y merchandising solidario.",
+  "lang": "es",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#0f766e",
+  "categories": ["health", "education"],
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
