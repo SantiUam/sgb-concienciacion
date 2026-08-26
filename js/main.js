@@ -58,7 +58,18 @@
   var cartCount = doc.getElementById("cartCount");
   var cartBtn = doc.getElementById("cartBtn");
   var toast = doc.getElementById("toast");
-  var cartItems = 0;
+  var cartDrawer = doc.getElementById("cartDrawer");
+  var cartClose = doc.getElementById("cartClose");
+  var cartOverlay = doc.getElementById("cartOverlay");
+  var cartItemsList = doc.getElementById("cartItemsList");
+  var cartEmptyState = doc.getElementById("cartEmptyState");
+  var cartFooter = doc.getElementById("cartFooter");
+  var cartTotalPrice = doc.getElementById("cartTotalPrice");
+  var clearCartBtn = doc.getElementById("clearCartBtn");
+  var continueShopping = doc.getElementById("continueShopping");
+
+  var cart = [];
+  var STORAGE_CART_KEY = "sgb-cart";
   var toastTimer = null;
 
   function showToast(msg) {
@@ -71,13 +82,119 @@
     }, 2600);
   }
 
-  function addToCart(name, price) {
-    cartItems += 1;
-    if (cartCount) {
-      cartCount.textContent = String(cartItems);
-      cartCount.classList.add("show");
+  function loadCart() {
+    var stored = localStorage.getItem(STORAGE_CART_KEY);
+    if (stored) {
+      try {
+        cart = JSON.parse(stored);
+      } catch (e) {
+        cart = [];
+      }
     }
-    showToast(tt("toast.added", "Añadido: ") + name + " · " + price + " €");
+    updateCartUI();
+  }
+
+  function saveCart() {
+    localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(cart));
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    var totalItems = cart.reduce(function (sum, item) { return sum + item.qty; }, 0);
+    if (cartCount) {
+      cartCount.textContent = String(totalItems);
+      cartCount.classList.toggle("show", totalItems > 0);
+    }
+
+    if (!cartItemsList) return;
+    cartItemsList.innerHTML = "";
+
+    if (cart.length === 0) {
+      if (cartEmptyState) cartEmptyState.style.display = "flex";
+      if (cartFooter) cartFooter.style.display = "none";
+    } else {
+      if (cartEmptyState) cartEmptyState.style.display = "none";
+      if (cartFooter) cartFooter.style.display = "block";
+
+      var total = 0;
+      cart.forEach(function (item, index) {
+        total += item.price * item.qty;
+        var li = doc.createElement("li");
+        li.className = "cart-item";
+        li.innerHTML =
+          "<div class=\"cart-item-img\"><svg viewBox=\"0 0 24 24\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M20.38 3.46L16 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5l-1.62-1.54z\"/><path d=\"M12 21c-1.5-3 2-4.5 0-7.5\" stroke-width=\"2.2\"/></svg></div>" +
+          "<div class=\"cart-item-info\">" +
+          "<h4 class=\"cart-item-name\">" + item.name + "</h4>" +
+          "<span class=\"cart-item-price\">" + item.price + " €</span>" +
+          "<div class=\"cart-item-actions\">" +
+          "<div class=\"qty-controls\">" +
+          "<button class=\"qty-btn minus\" data-index=\"" + index + "\">−</button>" +
+          "<span class=\"qty-val\">" + item.qty + "</span>" +
+          "<button class=\"qty-btn plus\" data-index=\"" + index + "\">+</button>" +
+          "</div>" +
+          "<button class=\"cart-remove\" data-index=\"" + index + "\">" + tt("cart.remove", "Eliminar") + "</button>" +
+          "</div>" +
+          "</div>";
+        cartItemsList.appendChild(li);
+      });
+
+      if (cartTotalPrice) cartTotalPrice.textContent = total + " €";
+
+      // Eventos de botones
+      cartItemsList.querySelectorAll(".qty-btn.plus").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var idx = parseInt(b.dataset.index);
+          cart[idx].qty += 1;
+          saveCart();
+        });
+      });
+      cartItemsList.querySelectorAll(".qty-btn.minus").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var idx = parseInt(b.dataset.index);
+          if (cart[idx].qty > 1) {
+            cart[idx].qty -= 1;
+          } else {
+            cart.splice(idx, 1);
+          }
+          saveCart();
+        });
+      });
+      cartItemsList.querySelectorAll(".cart-remove").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var idx = parseInt(b.dataset.index);
+          cart.splice(idx, 1);
+          saveCart();
+        });
+      });
+    }
+  }
+
+  function openCart() {
+    if (cartDrawer) {
+      cartDrawer.classList.add("open");
+      cartDrawer.setAttribute("aria-hidden", "false");
+      doc.body.classList.add("cart-open");
+    }
+  }
+
+  function closeCart() {
+    if (cartDrawer) {
+      cartDrawer.classList.remove("open");
+      cartDrawer.setAttribute("aria-hidden", "true");
+      doc.body.classList.remove("cart-open");
+    }
+  }
+
+  function addToCart(name, price) {
+    var existing = cart.find(function (i) { return i.name === name; });
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name: name, price: parseFloat(price), qty: 1 });
+    }
+    saveCart();
+    showToast(tt("toast.added", "Añadido: ") + name);
+    openCart();
   }
 
   doc.querySelectorAll(".add-cart").forEach(function (btn) {
@@ -97,16 +214,21 @@
   });
 
   if (cartBtn) {
-    cartBtn.addEventListener("click", function () {
-      if (cartItems === 0) {
-        showToast(tt("toast.empty", "Tu carrito está vacío. ¡Explora la tienda solidaria!"));
-      } else {
-        var merch = doc.getElementById("merchan");
-        showToast(tt("toast.count", "Llevas {n} artículo(s) en el carrito solidario.").replace("{n}", String(cartItems)));
-        if (merch) merch.scrollIntoView({ behavior: "smooth", block: "start" });
+    cartBtn.addEventListener("click", openCart);
+  }
+  if (cartClose) cartClose.addEventListener("click", closeCart);
+  if (cartOverlay) cartOverlay.addEventListener("click", closeCart);
+  if (continueShopping) continueShopping.addEventListener("click", closeCart);
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener("click", function () {
+      if (confirm(tt("cart.confirm.clear", "¿Vaciar todo el carrito?"))) {
+        cart = [];
+        saveCart();
       }
     });
   }
+
+  loadCart();
 
   /* ---------- Animación al hacer scroll (reveal) ---------- */
   var revealEls = doc.querySelectorAll(".reveal");
