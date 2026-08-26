@@ -616,4 +616,113 @@
   } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
     applyTheme("dark");
   }
+
+  /* ---------- Quiz Interactivo ---------- */
+  var quizStart = doc.getElementById("quizStart");
+  var quizGame = doc.getElementById("quizGame");
+  var quizResult = doc.getElementById("quizResult");
+  var startQuizBtn = doc.getElementById("startQuizBtn");
+  var restartQuizBtn = doc.getElementById("restartQuizBtn");
+  var quizQuestion = doc.getElementById("quizQuestion");
+  var quizOptions = doc.getElementById("quizOptions");
+  var quizProgressBar = doc.getElementById("quizProgressBar");
+  var quizStepCount = doc.getElementById("quizStepCount");
+  var quizFeedback = doc.getElementById("quizFeedback");
+  var feedbackText = doc.getElementById("feedbackText");
+  var feedbackIcon = doc.getElementById("feedbackIcon");
+  var nextQuestionBtn = doc.getElementById("nextQuestionBtn");
+  var resultScore = doc.getElementById("resultScore");
+  var resultTitle = doc.getElementById("resultTitle");
+  var resultText = doc.getElementById("resultText");
+
+  var currentQuestionIdx = 0;
+  var score = 0;
+  var questions = [
+    { q: "quiz.q1", o: ["quiz.q1.a", "quiz.q1.b", "quiz.q1.c"], correct: 1, f: "quiz.q1.f" },
+    { q: "quiz.q2", o: ["quiz.q2.a", "quiz.q2.b", "quiz.q2.c"], correct: 1, f: "quiz.q2.f" },
+    { q: "quiz.q3", o: ["quiz.q3.a", "quiz.q3.b", "quiz.q3.c"], correct: 1, f: "quiz.q3.f" },
+    { q: "quiz.q4", o: ["quiz.q4.a", "quiz.q4.b", "quiz.q4.c"], correct: 1, f: "quiz.q4.f" },
+    { q: "quiz.q5", o: ["quiz.q5.a", "quiz.q5.b", "quiz.q5.c"], correct: 0, f: "quiz.q5.f" }
+  ];
+
+  function showQuestion() {
+    if (!quizQuestion || !quizOptions) return;
+    var qData = questions[currentQuestionIdx];
+    quizQuestion.textContent = tt(qData.q, "Question");
+    quizOptions.innerHTML = "";
+    quizFeedback.hidden = true;
+
+    qData.o.forEach(function (optKey, idx) {
+      var btn = doc.createElement("button");
+      btn.className = "quiz-opt";
+      btn.textContent = tt(optKey, "Option");
+      btn.addEventListener("click", function () { checkAnswer(idx); });
+      quizOptions.appendChild(btn);
+    });
+
+    if (quizProgressBar) quizProgressBar.style.width = ((currentQuestionIdx) / questions.length * 100) + "%";
+    if (quizStepCount) quizStepCount.textContent = (currentQuestionIdx + 1) + "/" + questions.length;
+  }
+
+  function checkAnswer(selectedIdx) {
+    var qData = questions[currentQuestionIdx];
+    var options = quizOptions.querySelectorAll(".quiz-opt");
+    options.forEach(function (btn) { btn.disabled = true; });
+
+    var isCorrect = (selectedIdx === qData.correct);
+    if (isCorrect) {
+      score++;
+      options[selectedIdx].classList.add("correct");
+    } else {
+      options[selectedIdx].classList.add("wrong");
+      options[qData.correct].classList.add("correct");
+    }
+
+    if (quizFeedback) {
+      quizFeedback.hidden = false;
+      quizFeedback.className = "quiz-feedback " + (isCorrect ? "correct" : "wrong");
+      if (feedbackText) feedbackText.textContent = tt(qData.f, isCorrect ? "¡Correcto!" : "Vaya...");
+      if (feedbackIcon) {
+        feedbackIcon.innerHTML = isCorrect
+          ? "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"><path d=\"M20 6L9 17l-5-5\"/></svg>"
+          : "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"><path d=\"M18 6L6 18M6 6l12 12\"/></svg>";
+      }
+    }
+  }
+
+  function nextQuestion() {
+    currentQuestionIdx++;
+    if (currentQuestionIdx < questions.length) {
+      showQuestion();
+    } else {
+      showResults();
+    }
+  }
+
+  function showResults() {
+    if (quizGame) quizGame.hidden = true;
+    if (quizResult) quizResult.hidden = false;
+    if (quizProgressBar) quizProgressBar.style.width = "100%";
+    if (resultScore) resultScore.textContent = score + "/" + questions.length;
+
+    var resKey = "quiz.res.low";
+    if (score === questions.length) resKey = "quiz.res.high";
+    else if (score >= 3) resKey = "quiz.res.med";
+
+    if (resultTitle) resultTitle.textContent = tt(resKey, "¡Gracias por participar!");
+    if (resultText) resultText.textContent = tt("quiz.res.text", "Tu conocimiento ayuda a visibilizar el SGB.");
+  }
+
+  function startQuiz() {
+    currentQuestionIdx = 0;
+    score = 0;
+    if (quizStart) quizStart.hidden = true;
+    if (quizResult) quizResult.hidden = true;
+    if (quizGame) quizGame.hidden = false;
+    showQuestion();
+  }
+
+  if (startQuizBtn) startQuizBtn.addEventListener("click", startQuiz);
+  if (restartQuizBtn) restartQuizBtn.addEventListener("click", startQuiz);
+  if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", nextQuestion);
 })();

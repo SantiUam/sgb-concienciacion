@@ -692,6 +692,56 @@
         </div>
       </div>
     </section>
+
+    <!-- ===================== QUIZ ===================== -->
+    <section class="section section-alt" id="quiz">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker" data-i18n="quiz.kicker">Pon a prueba tu conocimiento</span>
+          <h2 data-i18n="quiz.title">¿Cuánto sabes sobre el SGB?</h2>
+          <p class="section-lead" data-i18n="quiz.lead">Un pequeño test para repasar los conceptos clave y síntomas del Síndrome de Guillain-Barré.</p>
+        </div>
+
+        <div class="quiz-container reveal" id="quizContainer">
+          <div class="quiz-start" id="quizStart">
+            <div class="quiz-icon">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3 data-i18n="quiz.start.title">¿Estás listo/a?</h3>
+            <p data-i18n="quiz.start.text">Son 5 preguntas rápidas que te ayudarán a recordar lo más importante.</p>
+            <button class="btn btn-primary" id="startQuizBtn" data-i18n="quiz.start.btn">Empezar Quiz</button>
+          </div>
+
+          <div class="quiz-game" id="quizGame" hidden>
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar"><span id="quizProgressBar"></span></div>
+              <span class="quiz-step-count" id="quizStepCount">1/5</span>
+            </div>
+            <div class="quiz-question-box">
+              <h3 class="quiz-question" id="quizQuestion">...</h3>
+              <div class="quiz-options" id="quizOptions">
+                <!-- Opciones dinámicas -->
+              </div>
+            </div>
+            <div class="quiz-feedback" id="quizFeedback" hidden>
+              <div class="feedback-icon" id="feedbackIcon"></div>
+              <p id="feedbackText"></p>
+              <button class="btn btn-small" id="nextQuestionBtn" data-i18n="quiz.next">Siguiente</button>
+            </div>
+          </div>
+
+          <div class="quiz-result" id="quizResult" hidden>
+            <div class="result-score" id="resultScore">0/5</div>
+            <h3 id="resultTitle">...</h3>
+            <p id="resultText">...</p>
+            <div class="result-actions">
+              <button class="btn btn-outline" id="restartQuizBtn" data-i18n="quiz.restart">Reintentar</button>
+              <a href="#concienciacion" class="btn btn-primary" data-i18n="quiz.share.cause">Apoyar la causa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ===================== FOOTER ===================== -->
