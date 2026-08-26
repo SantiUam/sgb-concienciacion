@@ -590,4 +590,30 @@
   doc.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeMenu();
   });
+
+  /* ---------- Modo Oscuro ---------- */
+  var themeToggle = doc.getElementById("themeToggle");
+  var STORAGE_THEME_KEY = "sgb-theme";
+
+  function applyTheme(theme) {
+    doc.documentElement.setAttribute("data-theme", theme);
+  }
+
+  function toggleTheme() {
+    var current = doc.documentElement.getAttribute("data-theme") || "light";
+    var newTheme = current === "light" ? "dark" : "light";
+    applyTheme(newTheme);
+    localStorage.setItem(STORAGE_THEME_KEY, newTheme);
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+
+  var savedTheme = localStorage.getItem(STORAGE_THEME_KEY);
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    applyTheme("dark");
+  }
 })();

@@ -1300,3 +1300,62 @@ body.modal-open { overflow: hidden; }
 .btn-block { width: 100%; }
 
 body.cart-open { overflow: hidden; }
+
+/* ---------- Modo Oscuro ---------- */
+[data-theme="dark"] {
+  --ink: #f1f5f9;
+  --ink-soft: #cbd5e1;
+  --muted: #94a3b8;
+  --line: #334155;
+  --line-soft: #1e293b;
+  --bg: #0f172a;
+  --bg-alt: #1e293b;
+  --bg-tint: rgba(20, 184, 166, .15);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
+  --shadow: 0 10px 30px -12px rgba(0, 0, 0, .5);
+}
+
+.theme-toggle {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--teal-700);
+  flex-shrink: 0;
+  transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
+}
+.theme-toggle:hover { transform: scale(1.08); border-color: var(--teal-400); }
+.theme-toggle svg { grid-area: 1/1; transition: opacity .3s var(--ease), transform .3s var(--ease); }
+.theme-toggle .moon { opacity: 0; transform: rotate(-20deg); }
+[data-theme="dark"] .theme-toggle .sun { opacity: 0; transform: rotate(20deg); }
+[data-theme="dark"] .theme-toggle .moon { opacity: 1; transform: rotate(0); }
+[data-theme="dark"] .site-header { background: rgba(15, 23, 42, .82); }
+[data-theme="dark"] .modal-card,
+[data-theme="dark"] .cart-panel,
+[data-theme="dark"] .test-tabs,
+[data-theme="dark"] .lang-menu,
+[data-theme="dark"] .test-card,
+[data-theme="dark"] .faq-item,
+[data-theme="dark"] .test-note {
+  background: #1e293b;
+  border-color: #334155;
+}
+[data-theme="dark"] .test-tab:hover { color: var(--teal-300); }
+[data-theme="dark"] .test-badge.verified,
+[data-theme="dark"] .test-badge.video-badge { background: rgba(255, 255, 255, .05); border-color: #334155; }
+[data-theme="dark"] .test-form input,
+[data-theme="dark"] .test-form select,
+[data-theme="dark"] .test-form textarea,
+[data-theme="dark"] .type-btn,
+[data-theme="dark"] .modal-close,
+[data-theme="dark"] .qty-btn:hover {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+[data-theme="dark"] .qty-controls { background: #0f172a; }
+[data-theme="dark"] .cart-footer { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .cart-item-img { background: #0f172a; }
+[data-theme="dark"] .nav { background: #0f172a; }
