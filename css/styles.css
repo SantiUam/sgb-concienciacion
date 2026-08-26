@@ -1361,6 +1361,8 @@ body.cart-open { overflow: hidden; }
 [data-theme="dark"] .nav { background: #0f172a; }
 
 /* ---------- Quiz ---------- */
+[hidden] { display: none !important; }
+
 .quiz-container {
   max-width: 720px;
   margin: 0 auto;
