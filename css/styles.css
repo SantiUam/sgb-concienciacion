@@ -1444,3 +1444,26 @@ body.cart-open { overflow: hidden; }
   .result-actions { flex-direction: column; width: 100%; }
   .result-actions .btn { width: 100%; }
 }
+
+/* ---------- Objetivo de Donación ---------- */
+.donation-goal {
+  margin-top: 40px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line-soft);
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 480px;
+  animation: testIn .6s var(--ease) both;
+}
+[data-theme="dark"] .donation-goal { background: rgba(255, 255, 255, .03); border-color: #334155; }
+
+.goal-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; gap: 16px; }
+.goal-title { font-size: .92rem; color: var(--ink-soft); }
+.goal-amount { font-family: var(--font-display); font-weight: 700; color: var(--teal-800); font-size: 1.05rem; }
+[data-theme="dark"] .goal-amount { color: var(--teal-400); }
+
+.goal-progress-bar { height: 10px; background: var(--line-soft); border-radius: 5px; overflow: hidden; margin-bottom: 10px; }
+[data-theme="dark"] .goal-progress-bar { background: #0f172a; }
+.goal-progress-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--teal-400), var(--teal-700)); width: 0; transition: width 1s var(--ease); }
+
+.goal-note { font-size: .82rem; color: var(--muted); margin: 0; }

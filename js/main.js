@@ -66,6 +66,7 @@
   var cartFooter = doc.getElementById("cartFooter");
   var cartTotalPrice = doc.getElementById("cartTotalPrice");
   var clearCartBtn = doc.getElementById("clearCartBtn");
+  var checkoutBtn = doc.getElementById("checkoutBtn");
   var continueShopping = doc.getElementById("continueShopping");
 
   var cart = [];
@@ -227,8 +228,21 @@
       }
     });
   }
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", function () {
+      var total = cart.reduce(function (sum, item) { return sum + (item.price * item.qty); }, 0);
+      var donation = total * 0.20; // 20% destinado a la causa
+      addDonation(donation);
+      
+      cart = [];
+      saveCart();
+      closeCart();
+      showToast(tt("cart.success", "¡Gracias! Tu compra solidaria ha sumado {n}€ al objetivo.").replace("{n}", donation.toFixed(2)));
+    });
+  }
 
   loadCart();
+  loadGoal();
 
   /* ---------- Animación al hacer scroll (reveal) ---------- */
   var revealEls = doc.querySelectorAll(".reveal");
@@ -594,6 +608,39 @@
   /* ---------- Modo Oscuro ---------- */
   var themeToggle = doc.getElementById("themeToggle");
   var STORAGE_THEME_KEY = "sgb-theme";
+
+  /* ---------- Objetivo de Donación ---------- */
+  var STORAGE_GOAL_KEY = "sgb-goal-amount";
+  var GOAL_TOTAL = 2500;
+  var currentGoalAmount = 850; // Cantidad base inicial
+
+  function loadGoal() {
+    var stored = localStorage.getItem(STORAGE_GOAL_KEY);
+    if (stored) currentGoalAmount = parseFloat(stored);
+    updateGoalUI();
+  }
+
+  function addDonation(amount) {
+    currentGoalAmount += amount;
+    localStorage.setItem(STORAGE_GOAL_KEY, currentGoalAmount);
+    updateGoalUI();
+  }
+
+  function updateGoalUI() {
+    var amountEl = doc.getElementById("currentGoalAmount");
+    var barEl = doc.getElementById("goalBar");
+    var noteEl = doc.getElementById("goalNote");
+    if (!amountEl || !barEl) return;
+
+    var percent = Math.min((currentGoalAmount / GOAL_TOTAL) * 100, 100);
+    amountEl.textContent = Math.floor(currentGoalAmount).toLocaleString();
+    barEl.style.width = percent + "%";
+    
+    if (noteEl) {
+      noteEl.innerHTML = tt("goal.note", "Llevamos el {n}% del objetivo alcanzado gracias a vuestra ayuda.")
+        .replace("{n}", "<strong>" + Math.floor(percent) + "</strong>");
+    }
+  }
 
   function applyTheme(theme) {
     doc.documentElement.setAttribute("data-theme", theme);
