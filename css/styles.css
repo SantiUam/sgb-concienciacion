@@ -1030,6 +1030,40 @@ img, svg { display: block; max-width: 100%; }
 .test-empty p { margin: 0; font-family: var(--font-display); font-weight: 600; color: var(--ink); }
 .test-empty span { color: var(--muted); font-size: .92rem; }
 
+.test-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.test-btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--ink-soft);
+  transition: all .2s var(--ease);
+}
+.test-btn-action:hover {
+  background: var(--bg-alt);
+  color: var(--teal-700);
+  border-color: var(--teal-300);
+}
+.test-btn-action svg { transition: transform .2s var(--ease); }
+.test-btn-action:hover svg { transform: scale(1.1); }
+
+.support-btn:active svg { transform: scale(1.4); color: var(--coral); }
+.support-btn span { font-variant-numeric: tabular-nums; }
+
 .test-note {
   display: flex;
   align-items: flex-start;

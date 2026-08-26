@@ -381,7 +381,8 @@
       type: "text",
       content: "El diagnóstico me llegó de golpe. Hoy sé que con tratamiento precoz y apoyo se puede recuperar la vida.",
       date: "2025-08-01",
-      verified: true
+      verified: true,
+      likes: 12
     },
     {
       id: 2,
@@ -391,7 +392,8 @@
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
       caption: "Mi camino de recuperación del SGB",
       date: "2025-06-12",
-      verified: true
+      verified: true,
+      likes: 8
     },
     {
       id: 3,
@@ -400,7 +402,8 @@
       type: "text",
       content: "Cuando a mi padre le diagnosticaron SGB, el desconocimiento lo asustó tanto como la enfermedad.",
       date: "2025-07-20",
-      verified: true
+      verified: true,
+      likes: 15
     }
   ];
 
@@ -479,8 +482,28 @@
         html += "<time class=\"test-date\">" + t.date + "</time>";
         html += "</div>";
 
+        html += "<div class=\"test-actions\">";
+        html += "<button class=\"test-btn-action support-btn\" data-id=\"" + t.id + "\">";
+        html += "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.61a5.5 5.5 0 0 0 0-7.78z\"/></svg>";
+        html += "<span>" + (t.likes || 0) + "</span>";
+        html += "</button>";
+        html += "<button class=\"test-btn-action share-btn\" data-id=\"" + t.id + "\">";
+        html += "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13\"/></svg>";
+        html += "</button>";
+        html += "</div>";
+
         html += "</div>";
         card.innerHTML = html;
+
+        // Eventos para esta tarjeta
+        card.querySelector(".support-btn").addEventListener("click", function () {
+          toggleTestLike(t.id);
+        });
+        card.querySelector(".share-btn").addEventListener("click", function () {
+          var shareText = t.type === "text" ? t.content : (t.caption || "Testimonio SGB");
+          shareContent("SGB · " + t.name, shareText);
+        });
+
         testGrid.appendChild(card);
       });
     }
@@ -499,6 +522,36 @@
       renderTestimonios();
     });
   });
+
+  function toggleTestLike(id) {
+    var tests = getTestimonios();
+    var test = tests.find(function (t) { return t.id === id; });
+    if (test) {
+      test.likes = (test.likes || 0) + 1;
+      saveTestimonios(tests);
+      renderTestimonios();
+      showToast(tt("toast.like.success", "¡Gracias por tu apoyo!"));
+    }
+  }
+
+  function shareContent(title, text) {
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        text: text,
+        url: window.location.href
+      }).catch(function () {});
+    } else {
+      // Fallback
+      var dummy = doc.createElement("input");
+      doc.body.appendChild(dummy);
+      dummy.value = window.location.href;
+      dummy.select();
+      doc.execCommand("copy");
+      doc.body.removeChild(dummy);
+      showToast(tt("toast.share.fallback", "Enlace copiado al portapapeles."));
+    }
+  }
 
   /* Modal */
   function openTestModal() {
@@ -807,6 +860,14 @@
   if (startQuizBtn) startQuizBtn.addEventListener("click", startQuiz);
   if (restartQuizBtn) restartQuizBtn.addEventListener("click", startQuiz);
   if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", nextQuestion);
+
+  var shareQuizBtn = doc.getElementById("shareQuizBtn");
+  if (shareQuizBtn) {
+    shareQuizBtn.addEventListener("click", function () {
+      var shareText = tt("quiz.share.text", "He sacado un {n} en el Quiz de concienciación sobre el SGB. ¡Pon a prueba tu conocimiento!").replace("{n}", score + "/" + questions.length);
+      shareContent("SGB Quiz", shareText);
+    });
+  }
 
   /* ---------- Newsletter ---------- */
   var newsletterForm = doc.getElementById("newsletterForm");

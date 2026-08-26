@@ -288,7 +288,22 @@
       "news.text": "Recibe noticias sobre investigación, eventos de concienciación y nuevas historias en tu correo.",
       "news.ph": "Tu correo electrónico",
       "news.btn": "Suscribirse",
-      "toast.newsletter.success": "¡Gracias! Te has suscrito con: "
+      "toast.newsletter.success": "¡Gracias! Te has suscrito con: ",
+      "toast.like.success": "¡Gracias por tu apoyo!",
+      "toast.share.fallback": "Enlace copiado al portapapeles.",
+      "quiz.share.btn": "Compartir resultado",
+      "quiz.share.text": "He sacado un {n} en el Quiz de concienciación sobre el SGB. ¡Pon a prueba tu conocimiento!",
+      "ayuda.h4.title": "Hazte Voluntario",
+      "ayuda.h4.text": "Dona tu tiempo y habilidades para ayudar a difundir el mensaje y apoyar a la comunidad.",
+      "ayuda.h4.link": "Unirse ahora",
+      "vol.modal.title": "Únete como Voluntario",
+      "vol.field.name": "Nombre completo",
+      "vol.field.email": "Correo electrónico",
+      "vol.field.skills": "Habilidades / Intereses",
+      "vol.ph.skills": "Ej.: Traducción, diseño, redes sociales, apoyo emocional...",
+      "vol.field.msg": "¿Por qué quieres ayudar?",
+      "vol.btn.submit": "Enviar solicitud",
+      "vol.toast.success": "¡Gracias por tu interés! Nos pondremos en contacto contigo pronto."
     },
 
     /* ---------- English ---------- */
@@ -566,7 +581,22 @@
       "news.text": "Receive news about research, awareness events, and new stories in your inbox.",
       "news.ph": "Your email address",
       "news.btn": "Subscribe",
-      "toast.newsletter.success": "Thank you! You have subscribed with: "
+      "toast.newsletter.success": "Thank you! You have subscribed with: ",
+      "toast.like.success": "Thank you for your support!",
+      "toast.share.fallback": "Link copied to clipboard.",
+      "quiz.share.btn": "Share result",
+      "quiz.share.text": "I scored {n} on the GBS awareness Quiz. Test your knowledge!",
+      "ayuda.h4.title": "Become a Volunteer",
+      "ayuda.h4.text": "Donate your time and skills to help spread the message and support the community.",
+      "ayuda.h4.link": "Join now",
+      "vol.modal.title": "Join as a Volunteer",
+      "vol.field.name": "Full name",
+      "vol.field.email": "Email address",
+      "vol.field.skills": "Skills / Interests",
+      "vol.ph.skills": "e.g., Translation, design, social media, emotional support...",
+      "vol.field.msg": "Why do you want to help?",
+      "vol.btn.submit": "Send application",
+      "vol.toast.success": "Thank you for your interest! We will contact you soon."
     },
 
     /* ---------- Deutsch ---------- */
@@ -844,7 +874,11 @@
       "news.text": "Erhalte Nachrichten über Forschung, Aufklärungsveranstaltungen und neue Geschichten in deinem Posteingang.",
       "news.ph": "Deine E-Mail-Adresse",
       "news.btn": "Abonnieren",
-      "toast.newsletter.success": "Vielen Dank! Du hast dich abonniert mit: "
+      "toast.newsletter.success": "Vielen Dank! Du hast dich abonniert mit: ",
+      "toast.like.success": "Danke für deine Unterstützung!",
+      "toast.share.fallback": "Link in die Zwischenablage kopiert.",
+      "quiz.share.btn": "Ergebnis teilen",
+      "quiz.share.text": "Ich habe beim GBS-Aufklärungs-Quiz {n} erreicht. Teste dein Wissen!"
     },
 
     /* ---------- Français ---------- */
@@ -1122,7 +1156,11 @@
       "news.text": "Recevez des nouvelles sur la recherche, les événements de sensibilisation et les nouveaux récits dans votre boîte mail.",
       "news.ph": "Votre adresse e-mail",
       "news.btn": "S'abonner",
-      "toast.newsletter.success": "Merci ! Vous vous êtes abonné avec : "
+      "toast.newsletter.success": "Merci ! Vous vous êtes abonné avec : ",
+      "toast.like.success": "Merci pour votre soutien !",
+      "toast.share.fallback": "Lien copié dans le presse-papiers.",
+      "quiz.share.btn": "Partager le résultat",
+      "quiz.share.text": "J'ai obtenu {n} au Quiz de sensibilisation au SGB. Testez vos connaissances !"
     }
   };
 
