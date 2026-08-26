@@ -264,6 +264,41 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* ---------- Gestión del Mapa de Síntomas ---------- */
+  var hotspots = doc.querySelectorAll(".hotspot");
+  var infoContents = doc.querySelectorAll(".info-content");
+
+  function showMapStep(step) {
+    hotspots.forEach(function (h) {
+      h.classList.toggle("active", h.getAttribute("data-step") === step);
+    });
+    infoContents.forEach(function (c) {
+      if (c.getAttribute("data-step") === step) {
+        c.hidden = false;
+        c.classList.add("active");
+      } else {
+        c.hidden = true;
+        c.classList.remove("active");
+      }
+    });
+  }
+
+  hotspots.forEach(function (h) {
+    h.addEventListener("click", function () {
+      var step = h.getAttribute("data-step");
+      showMapStep(step);
+    });
+    // Accesibilidad con teclado
+    h.setAttribute("role", "button");
+    h.setAttribute("tabindex", "0");
+    h.addEventListener("keypress", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        showMapStep(h.getAttribute("data-step"));
+      }
+    });
+  });
+
   /* ---------- Barras de progreso (concienciación) ---------- */
   var statRows = doc.querySelectorAll(".stat-row");
   statRows.forEach(function (row) {
@@ -772,4 +807,17 @@
   if (startQuizBtn) startQuizBtn.addEventListener("click", startQuiz);
   if (restartQuizBtn) restartQuizBtn.addEventListener("click", startQuiz);
   if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", nextQuestion);
+
+  /* ---------- Newsletter ---------- */
+  var newsletterForm = doc.getElementById("newsletterForm");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = doc.getElementById("newsEmail").value;
+      if (email) {
+        showToast(tt("toast.newsletter.success", "¡Gracias! Te has suscrito con: ") + email);
+        newsletterForm.reset();
+      }
+    });
+  }
 })();
