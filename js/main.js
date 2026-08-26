@@ -171,6 +171,7 @@
   var headerH = header ? header.offsetHeight : 0;
   doc.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {
+      headerH = header ? header.offsetHeight : 0; // Recalcular en cada click
       var id = link.getAttribute("href");
       if (!id || id === "#" || id.length < 2) return;
       var target = doc.querySelector(id);
@@ -183,6 +184,279 @@
       }
     });
   });
+
+  /* ---------- Gestión de Testimonios ---------- */
+  var testGrid = doc.getElementById("testGrid");
+  var testCountEl = doc.getElementById("testCount");
+  var testEmpty = doc.getElementById("testEmpty");
+  var testTabs = doc.querySelectorAll(".test-tab");
+  var testShareBtn = doc.getElementById("testShareBtn");
+  var testModal = doc.getElementById("testModal");
+  var testForm = doc.getElementById("testForm");
+  var testStoryField = doc.getElementById("testStoryField");
+  var testVideoField = doc.getElementById("testVideoField");
+  var typeBtns = doc.querySelectorAll(".type-btn");
+  var testCharCount = doc.getElementById("testCharCount");
+  var testStoryInput = doc.getElementById("testStory");
+
+  var currentFilter = "all";
+  var STORAGE_TEST_KEY = "sgb-testimonios";
+
+  var defaultTestimonios = [
+    {
+      id: 1,
+      name: "María L.",
+      role: "patient",
+      type: "text",
+      content: "El diagnóstico me llegó de golpe. Hoy sé que con tratamiento precoz y apoyo se puede recuperar la vida.",
+      date: "2025-08-01",
+      verified: true
+    },
+    {
+      id: 2,
+      name: "Javier M.",
+      role: "survivor",
+      type: "video",
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      caption: "Mi camino de recuperación del SGB",
+      date: "2025-06-12",
+      verified: true
+    },
+    {
+      id: 3,
+      name: "Lucía R.",
+      role: "family",
+      type: "text",
+      content: "Cuando a mi padre le diagnosticaron SGB, el desconocimiento lo asustó tanto como la enfermedad.",
+      date: "2025-07-20",
+      verified: true
+    }
+  ];
+
+  function getTestimonios() {
+    var stored = localStorage.getItem(STORAGE_TEST_KEY);
+    if (stored) return JSON.parse(stored);
+    return defaultTestimonios;
+  }
+
+  function saveTestimonios(tests) {
+    localStorage.setItem(STORAGE_TEST_KEY, JSON.stringify(tests));
+  }
+
+  function renderTestimonios() {
+    if (!testGrid) return;
+    var tests = getTestimonios();
+    var filtered = tests.filter(function (t) {
+      if (currentFilter === "all") return true;
+      return t.type === currentFilter;
+    });
+
+    testGrid.innerHTML = "";
+    if (filtered.length === 0) {
+      if (testEmpty) testEmpty.hidden = false;
+      if (testCountEl) testCountEl.hidden = true;
+    } else {
+      if (testEmpty) testEmpty.hidden = true;
+      if (testCountEl) {
+        testCountEl.hidden = false;
+        testCountEl.innerHTML = tt("test.count", "Mostrando <strong>{n}</strong> testimonio(s)").replace("{n}", String(filtered.length));
+      }
+
+      filtered.forEach(function (t) {
+        var card = doc.createElement("article");
+        card.className = "test-card " + t.type;
+        if (!t.verified) card.classList.add("pending-review");
+
+        var html = "";
+        if (t.type === "video") {
+          html += "<div class=\"test-media\">";
+          if (t.videoUrl.includes("youtube.com") || t.videoUrl.includes("youtu.be")) {
+             // Simplificación para el ejemplo
+             html += "<div style=\"display:grid;place-items:center;height:100%;color:#fff;font-size:0.8rem\">YouTube Video</div>";
+          } else {
+             html += "<video src=\"" + t.videoUrl + "\" controls muted></video>";
+          }
+          html += "</div>";
+        }
+
+        html += "<div class=\"test-card-body\">";
+        if (t.type === "text") {
+          html += "<span class=\"test-quote-mark\" aria-hidden=\"true\">“</span>";
+          html += "<p class=\"test-text\">" + t.content + "</p>";
+        } else {
+          html += "<h4 class=\"test-video-caption\">" + (t.caption || tt("test.video.default", "Testimonio en vídeo")) + "</h4>";
+        }
+
+        html += "<div class=\"test-foot\">";
+        var initial = (t.name || "?").charAt(0).toUpperCase();
+        html += "<div class=\"test-avatar role-" + (t.role || "other") + "\">" + initial + "</div>";
+        html += "<div class=\"test-author\">";
+        html += "<strong>" + t.name + "</strong>";
+        html += "<span>" + tt("test.role." + t.role, t.role) + "</span>";
+        html += "</div>";
+        html += "</div>";
+
+        html += "<div class=\"test-badges\">";
+        if (t.verified) {
+          html += "<span class=\"test-badge verified\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6L9 17l-5-5\"/></svg>" + tt("test.badge.verified", "Verificado") + "</span>";
+        } else {
+          html += "<span class=\"test-badge pending\">" + tt("test.badge.pending", "Pendiente") + "</span>";
+        }
+        if (t.type === "video") {
+          html += "<span class=\"test-badge video-badge\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"5\" width=\"14\" height=\"14\" rx=\"3\"/><path d=\"m22 8-6 4 6 4z\"/></svg>Video</span>";
+        }
+        html += "<time class=\"test-date\">" + t.date + "</time>";
+        html += "</div>";
+
+        html += "</div>";
+        card.innerHTML = html;
+        testGrid.appendChild(card);
+      });
+    }
+  }
+
+  /* Filtros */
+  testTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      testTabs.forEach(function (b) {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      currentFilter = tab.dataset.filter;
+      renderTestimonios();
+    });
+  });
+
+  /* Modal */
+  function openTestModal() {
+    if (!testModal) return;
+    testModal.classList.add("open");
+    doc.body.classList.add("modal-open");
+    testModal.setAttribute("aria-hidden", "false");
+    var first = testModal.querySelector("input");
+    if (first) first.focus();
+  }
+
+  function closeTestModal() {
+    if (!testModal) return;
+    testModal.classList.remove("open");
+    doc.body.classList.remove("modal-open");
+    testModal.setAttribute("aria-hidden", "true");
+    if (testShareBtn) testShareBtn.focus();
+  }
+
+  if (testShareBtn) {
+    testShareBtn.addEventListener("click", openTestModal);
+  }
+
+  doc.querySelectorAll("[data-test-close]").forEach(function (el) {
+    el.addEventListener("click", closeTestModal);
+  });
+
+  /* Formulario */
+  typeBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      typeBtns.forEach(function (b) {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
+      btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
+      var type = btn.dataset.type;
+      if (type === "text") {
+        testStoryField.hidden = false;
+        testVideoField.hidden = true;
+      } else {
+        testStoryField.hidden = true;
+        testVideoField.hidden = false;
+      }
+    });
+  });
+
+  if (testStoryInput && testCharCount) {
+    testStoryInput.addEventListener("input", function () {
+      testCharCount.textContent = String(testStoryInput.value.length);
+    });
+  }
+
+  if (testForm) {
+    testForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = doc.getElementById("testName").value.trim();
+      var role = doc.getElementById("testRole").value;
+      var activeTypeBtn = doc.querySelector(".type-btn.active");
+      var type = activeTypeBtn ? activeTypeBtn.dataset.type : "text";
+      var content = doc.getElementById("testStory").value.trim();
+      var videoUrl = doc.getElementById("testVideo").value.trim();
+      var caption = doc.getElementById("testCaption").value.trim();
+      var consent = doc.getElementById("testConsent").checked;
+
+      var valid = true;
+      // Validación básica
+      if (!name) {
+        doc.getElementById("testName").parentElement.classList.add("invalid");
+        valid = false;
+      } else {
+        doc.getElementById("testName").parentElement.classList.remove("invalid");
+      }
+
+      if (!role) {
+        doc.getElementById("testRole").parentElement.classList.add("invalid");
+        valid = false;
+      } else {
+        doc.getElementById("testRole").parentElement.classList.remove("invalid");
+      }
+
+      if (type === "text" && content.length < 20) {
+        testStoryField.classList.add("invalid");
+        valid = false;
+      } else {
+        testStoryField.classList.remove("invalid");
+      }
+
+      if (type === "video" && !videoUrl) {
+        testVideoField.classList.add("invalid");
+        valid = false;
+      } else {
+        testVideoField.classList.remove("invalid");
+      }
+
+      if (!consent) {
+        doc.getElementById("testConsent").parentElement.classList.add("invalid");
+        valid = false;
+      } else {
+        doc.getElementById("testConsent").parentElement.classList.remove("invalid");
+      }
+
+      if (!valid) return;
+
+      var newTest = {
+        id: Date.now(),
+        name: name,
+        role: role,
+        type: type,
+        content: content,
+        videoUrl: videoUrl,
+        caption: caption,
+        date: new Date().toISOString().split("T")[0],
+        verified: false
+      };
+
+      var tests = getTestimonios();
+      tests.unshift(newTest);
+      saveTestimonios(tests);
+
+      showToast(tt("test.success", "¡Gracias! Tu testimonio se ha guardado y será revisado."));
+      testForm.reset();
+      if (testCharCount) testCharCount.textContent = "0";
+      closeTestModal();
+      renderTestimonios();
+    });
+  }
+
+  renderTestimonios();
 
   /* ---------- Cerrar menú al hacer click fuera ---------- */
   doc.addEventListener("click", function (e) {
