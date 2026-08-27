@@ -342,7 +342,24 @@
       "myths.3.r": "FALSO. Es una parálisis muscular real causada por el daño a los nervios periféricos.",
       "tts.play": "Escuchar contenido",
       "tts.stop": "Detener lectura",
-      "tts.unsupported": "Tu navegador no soporta la lectura de voz."
+      "tts.unsupported": "Tu navegador no soporta la lectura de voz.",
+      "stats.title": "Impacto Visual del SGB",
+      "stats.incidence.h": "Incidencia Anual",
+      "stats.incidence.p": "1-2 casos por cada 100.000 personas en todo el mundo.",
+      "stats.recovery.h": "Tasa de Recuperación",
+      "stats.recovery.p": "El 85% de los pacientes logra una recuperación funcional completa.",
+      "stats.hospital.h": "Hospitalización",
+      "stats.hospital.p": "El 92% requiere ingreso; el 25% necesita ventilación asistida.",
+      "care.title": "Checklist para Cuidadores",
+      "care.kicker": "Apoyo en el hogar",
+      "care.lead": "Herramienta interactiva para familiares durante la fase de recuperación domiciliaria.",
+      "care.check.1": "Controlar la movilidad diaria y cambios en la fuerza.",
+      "care.check.2": "Asegurar la adherencia al plan de fisioterapia.",
+      "care.check.3": "Vigilar la integridad de la piel y cambios en la sensibilidad.",
+      "care.check.4": "Proporcionar apoyo emocional y descanso adecuado.",
+      "care.check.5": "Mantener un registro de medicación y citas médicas.",
+      "care.warning.title": "SEÑALES DE ALERTA (Consultar urgente)",
+      "care.warning.text": "Dificultad súbita para respirar, atragantamientos frecuentes o debilidad que vuelve a ascender rápidamente."
     },
 
     /* ---------- English ---------- */
@@ -674,7 +691,24 @@
       "myths.3.r": "FALSE. It is real muscular paralysis caused by damage to the peripheral nerves.",
       "tts.play": "Listen to content",
       "tts.stop": "Stop reading",
-      "tts.unsupported": "Your browser does not support text-to-speech."
+      "tts.unsupported": "Your browser does not support text-to-speech.",
+      "stats.title": "Visual Impact of GBS",
+      "stats.incidence.h": "Annual Incidence",
+      "stats.incidence.p": "1-2 cases per 100,000 people worldwide.",
+      "stats.recovery.h": "Recovery Rate",
+      "stats.recovery.p": "85% of patients achieve full functional recovery.",
+      "stats.hospital.h": "Hospitalization",
+      "stats.hospital.p": "92% require admission; 25% need assisted ventilation.",
+      "care.title": "Caregiver Checklist",
+      "care.kicker": "Home support",
+      "care.lead": "Interactive tool for family members during the home recovery phase.",
+      "care.check.1": "Monitor daily mobility and changes in strength.",
+      "care.check.2": "Ensure adherence to the physiotherapy plan.",
+      "care.check.3": "Watch for skin integrity and changes in sensitivity.",
+      "care.check.4": "Provide emotional support and adequate rest.",
+      "care.check.5": "Keep a record of medication and medical appointments.",
+      "care.warning.title": "RED FLAGS (Consult urgently)",
+      "care.warning.text": "Sudden difficulty breathing, frequent choking, or weakness that starts ascending rapidly again."
     },
 
     /* ---------- Deutsch ---------- */
@@ -1006,7 +1040,24 @@
       "myths.3.r": "FALSCH. Es handelt sich um eine echte Muskellähmung, die durch Schäden an den peripheren Nerven verursacht wird.",
       "tts.play": "Inhalt anhören",
       "tts.stop": "Wiedergabe stoppen",
-      "tts.unsupported": "Dein Browser unterstützt keine Sprachausgabe."
+      "tts.unsupported": "Dein Browser unterstützt keine Sprachausgabe.",
+      "stats.title": "Visuelle Auswirkungen von GBS",
+      "stats.incidence.h": "Jährliche Inzidenz",
+      "stats.incidence.p": "1-2 Fälle pro 100.000 Menschen weltweit.",
+      "stats.recovery.h": "Erholungsrate",
+      "stats.recovery.p": "85% der Patienten erreichen eine vollständige funktionelle Erholung.",
+      "stats.hospital.h": "Hospitalisierung",
+      "stats.hospital.p": "92% erfordern eine Aufnahme; 25% benötigen künstliche Beatmung.",
+      "care.title": "Checkliste für Pflegende",
+      "care.kicker": "Unterstützung zu Hause",
+      "care.lead": "Interaktives Tool für Familienmitglieder während der häuslichen Erholungsphase.",
+      "care.check.1": "Tägliche Mobilität und Kraftveränderungen überwachen.",
+      "care.check.2": "Einhaltung des Physiotherapieplans sicherstellen.",
+      "care.check.3": "Auf Hautintegrität und Sensibilitätsveränderungen achten.",
+      "care.check.4": "Emotionale Unterstützung und angemessene Ruhe bieten.",
+      "care.check.5": "Aufzeichnungen über Medikamente und Arzttermine führen.",
+      "care.warning.title": "WARNSIGNALE (Dringend konsultieren)",
+      "care.warning.text": "Plötzliche Atembeschwerden, häufiges Verschlucken oder Schwäche, die wieder schnell aufsteigt."
     },
 
     /* ---------- Français ---------- */
@@ -1338,7 +1389,24 @@
       "myths.3.r": "FAUX. Il s'agit d'une réelle paralysie musculaire causée par des dommages aux nerfs périphériques.",
       "tts.play": "Écouter le contenu",
       "tts.stop": "Arrêter la lecture",
-      "tts.unsupported": "Votre navigateur ne supporte pas la synthèse vocale."
+      "tts.unsupported": "Votre navigateur ne supporte pas la synthèse vocale.",
+      "stats.title": "Impact Visuel du SGB",
+      "stats.incidence.h": "Incidence Annuelle",
+      "stats.incidence.p": "1 à 2 cas pour 100 000 personnes dans le monde.",
+      "stats.recovery.h": "Taux de Récupération",
+      "stats.recovery.p": "85 % des patients obtiennent une récupération fonctionnelle complète.",
+      "stats.hospital.h": "Hospitalisation",
+      "stats.hospital.p": "92 % nécessitent une admission ; 25 % ont besoin d'une ventilation assistée.",
+      "care.title": "Checklist pour les Aidants",
+      "care.kicker": "Soutien à domicile",
+      "care.lead": "Outil interactif pour les proches pendant la phase de récupération à domicile.",
+      "care.check.1": "Surveiller la mobilité quotidienne et les changements de force.",
+      "care.check.2": "Assurer le respect du plan de physiothérapie.",
+      "care.check.3": "Surveiller l'intégrité de la peau et les changements de sensibilité.",
+      "care.check.4": "Fournir un soutien émotionnel et un repos adéquat.",
+      "care.check.5": "Tenir un registre des médicaments et des rendez-vous médicaux.",
+      "care.warning.title": "SIGNAUX D'ALERTE (Consulter d'urgence)",
+      "care.warning.text": "Difficulté soudaine à respirer, étouffements fréquents ou faiblesse qui recommence à monter rapidement."
     }
   };
 

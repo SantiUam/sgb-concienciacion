@@ -606,6 +606,55 @@
             </div>
           </div>
         </div>
+
+        <!-- Infografía Dinámica de Estadísticas -->
+        <div class="stats-infographic reveal">
+          <div class="section-head center">
+            <h2 data-i18n="stats.title">Impacto Visual del SGB</h2>
+          </div>
+          <div class="stats-infographic-grid">
+            <!-- Incidencia -->
+            <article class="stat-card-clinical" aria-labelledby="stat-inc-h">
+              <div class="stat-viz" aria-hidden="true">
+                <div class="incidence-dots">
+                  <div class="dot active"></div>
+                  <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                  <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                  <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                  <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                  <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                </div>
+              </div>
+              <h3 id="stat-inc-h" data-i18n="stats.incidence.h">Incidencia Anual</h3>
+              <p data-i18n="stats.incidence.p">1-2 casos por cada 100.000 personas en todo el mundo.</p>
+            </article>
+
+            <!-- Recuperación -->
+            <article class="stat-card-clinical" aria-labelledby="stat-rec-h">
+              <div class="stat-viz" aria-hidden="true">
+                <svg class="circle-chart" viewBox="0 0 100 100">
+                  <circle class="circle-bg" cx="50" cy="50" r="45"/>
+                  <circle class="circle-progress" cx="50" cy="50" r="45"/>
+                  <text x="50" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" transform="rotate(90 50 50)">85%</text>
+                </svg>
+              </div>
+              <h3 id="stat-rec-h" data-i18n="stats.recovery.h">Tasa de Recuperación</h3>
+              <p data-i18n="stats.recovery.p">El 85% de los pacientes logra una recuperación funcional completa.</p>
+            </article>
+
+            <!-- Hospitalización -->
+            <article class="stat-card-clinical" aria-labelledby="stat-hosp-h">
+              <div class="stat-viz" aria-hidden="true">
+                <div class="bar-viz">
+                  <div class="bar-item teal hosp"></div>
+                  <div class="bar-item coral vent"></div>
+                </div>
+              </div>
+              <h3 id="stat-hosp-h" data-i18n="stats.hospital.h">Hospitalización</h3>
+              <p data-i18n="stats.hospital.p">El 92% requiere ingreso; el 25% necesita ventilación asistida.</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -819,6 +868,53 @@
             <p data-i18n="ayuda.cta.text">Cada voz suma. Cada gesto cuenta. Cada paso acerca la esperanza.</p>
           </div>
           <a href="#merchan" class="btn btn-light" data-i18n="ayuda.cta.btn">Explorar merchandising</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CHECKLIST CUIDADORES ===================== -->
+    <section class="section section-alt" id="checklist-cuidadores">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker" data-i18n="care.kicker">Apoyo en el hogar</span>
+          <h2 data-i18n="care.title">Checklist para Cuidadores</h2>
+        </div>
+
+        <div class="checklist-wrapper reveal">
+          <p class="checklist-lead" data-i18n="care.lead">Herramienta interactiva para familiares durante la fase de recuperación domiciliaria.</p>
+          
+          <ul class="checklist-items">
+            <li class="checklist-item">
+              <input type="checkbox" id="check1">
+              <label for="check1" data-i18n="care.check.1">Controlar la movilidad diaria y cambios en la fuerza.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="check2">
+              <label for="check2" data-i18n="care.check.2">Asegurar la adherencia al plan de fisioterapia.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="check3">
+              <label for="check3" data-i18n="care.check.3">Vigilar la integridad de la piel y cambios en la sensibilidad.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="check4">
+              <label for="check4" data-i18n="care.check.4">Proporcionar apoyo emocional y descanso adecuado.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="check5">
+              <label for="check5" data-i18n="care.check.5">Mantener un registro de medicación y citas médicas.</label>
+            </li>
+          </ul>
+
+          <div class="warning-box">
+            <div class="warning-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="warning-content">
+              <h4 data-i18n="care.warning.title">SEÑALES DE ALERTA (Consultar urgente)</h4>
+              <p data-i18n="care.warning.text">Dificultad súbita para respirar, atragantamientos frecuentes o debilidad que vuelve a ascender rápidamente.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

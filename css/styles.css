@@ -2049,37 +2049,218 @@ body.high-contrast .tts-btn {
   position: fixed;
   right: 30px;
   bottom: 30px;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--teal-600);
-  color: #fff;
-  border: none;
-  cursor: pointer;
+  background: var(--bg);
+  color: var(--teal-600);
+  border: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
-  z-index: 100;
+  cursor: pointer;
+  z-index: 90;
+  box-shadow: var(--shadow);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(20px);
-  transition: all .35s var(--ease);
+  transition: all .3s var(--ease);
 }
-.back-to-top.show {
+.back-to-top.visible {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
 }
 .back-to-top:hover {
-  background: var(--teal-700);
   transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.4);
+  background: var(--teal-50);
+  border-color: var(--teal-200);
 }
-[data-theme="dark"] .back-to-top {
+
+/* ---------- Infografía de Estadísticas ---------- */
+.stats-infographic {
+  margin-top: 50px;
+}
+.stats-infographic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.stat-card-clinical {
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+  border-radius: 24px;
+  padding: 30px;
+  text-align: center;
+  transition: all .3s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.stat-card-clinical:hover {
+  transform: translateY(-5px);
+  border-color: var(--teal-200);
+  box-shadow: var(--shadow-lg);
+}
+.stat-viz {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.stat-card-clinical h3 {
+  margin: 0 0 10px 0;
+  font-family: var(--font-display);
+  color: var(--teal-800);
+  font-size: 1.25rem;
+}
+.stat-card-clinical p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* Gráfico circular (Recuperación) */
+.circle-chart { width: 120px; height: 120px; transform: rotate(-90deg); }
+.circle-bg { fill: none; stroke: var(--bg-alt); stroke-width: 8; }
+.circle-progress {
+  fill: none;
+  stroke: var(--teal-500);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 2s ease-out;
+}
+.reveal.in .circle-progress { stroke-dashoffset: 42; } /* 85% */
+
+/* Gráfico de barras (Hospitalización) */
+.bar-viz {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  height: 100px;
+}
+.bar-item {
+  width: 40px;
+  background: var(--bg-alt);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  transition: height 1.5s ease-out;
+}
+.bar-item.teal { background: var(--teal-500); }
+.bar-item.coral { background: var(--coral); }
+.reveal.in .bar-item.hosp { height: 92px; }
+.reveal.in .bar-item.vent { height: 25px; }
+
+/* Iconos de incidencia */
+.incidence-dots {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  width: 160px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+}
+.dot.active {
   background: var(--teal-500);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: pulseDot 2s infinite;
 }
-[data-theme="dark"] .back-to-top:hover {
-  background: var(--teal-400);
+
+@keyframes pulseDot {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
 }
+
+/* ---------- Checklist Cuidadores ---------- */
+.checklist-wrapper {
+  max-width: 800px;
+  margin: 40px auto 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+.checklist-lead {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--ink-soft);
+}
+.checklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 16px;
+  border-bottom: 1px solid var(--line-soft);
+  cursor: pointer;
+  transition: background .2s var(--ease);
+}
+.checklist-item:hover { background: var(--bg-alt); }
+.checklist-item:last-child { border-bottom: none; }
+.checklist-item input {
+  margin-top: 4px;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--teal-600);
+  cursor: pointer;
+}
+.checklist-item label {
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  transition: color .2s var(--ease);
+}
+.checklist-item.checked label {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.warning-box {
+  background: #fff1f2;
+  border: 1px solid #fda4af;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+[data-theme="dark"] .warning-box { background: #450a0a; border-color: #991b1b; }
+
+.warning-icon {
+  color: #e11d48;
+  flex-shrink: 0;
+}
+.warning-content h4 {
+  margin: 0 0 5px 0;
+  color: #9f1239;
+  font-family: var(--font-display);
+}
+[data-theme="dark"] .warning-content h4 { color: #fecdd3; }
+.warning-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #be123c;
+}
+[data-theme="dark"] .warning-content p { color: #fda4af; }
+
+@media (max-width: 600px) {
+  .checklist-wrapper { padding: 25px; }
+  .warning-box { flex-direction: column; text-align: center; }
+}
+
+[data-theme="dark"] .stat-card-clinical { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .stat-card-clinical h3 { color: var(--teal-400); }
+[data-theme="dark"] .stat-viz .circle-bg { stroke: #334155; }
+[data-theme="dark"] .stat-viz .bar-item { background: #334155; }
+[data-theme="dark"] .stat-viz .dot { background: #334155; }
+[data-theme="dark"] .checklist-wrapper { background: #1e293b; border-color: #334155; }

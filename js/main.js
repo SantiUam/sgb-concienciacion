@@ -1101,4 +1101,56 @@
       });
     });
   }
+
+  /* ---------- Checklist de Cuidadores ---------- */
+  var checklistItems = doc.querySelectorAll(".checklist-item");
+  var STORAGE_CHECKLIST_KEY = "sgb-care-checklist";
+
+  function loadChecklist() {
+    try {
+      var stored = localStorage.getItem(STORAGE_CHECKLIST_KEY);
+      if (stored) {
+        var data = JSON.parse(stored);
+        checklistItems.forEach(function (item) {
+          var input = item.querySelector("input");
+          if (input && data[input.id]) {
+            input.checked = true;
+            item.classList.add("checked");
+          }
+        });
+      }
+    } catch (e) {}
+  }
+
+  function saveChecklist() {
+    var data = {};
+    checklistItems.forEach(function (item) {
+      var input = item.querySelector("input");
+      if (input) data[input.id] = input.checked;
+    });
+    try {
+      localStorage.setItem(STORAGE_CHECKLIST_KEY, JSON.stringify(data));
+    } catch (e) {}
+  }
+
+  checklistItems.forEach(function (item) {
+    var input = item.querySelector("input");
+    if (!input) return;
+
+    // Permitir clic en toda la fila
+    item.addEventListener("click", function (e) {
+      if (e.target !== input) {
+        input.checked = !input.checked;
+        var event = new Event("change");
+        input.dispatchEvent(event);
+      }
+    });
+
+    input.addEventListener("change", function () {
+      item.classList.toggle("checked", input.checked);
+      saveChecklist();
+    });
+  });
+
+  loadChecklist();
 })();
