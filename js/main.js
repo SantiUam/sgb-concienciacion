@@ -7,6 +7,17 @@
 
   var doc = document;
 
+  /* ---------- Sanitización (XSS Protection) ---------- */
+  function esc(str) {
+    if (!str) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   /* ---------- Helper de traducción (i18n) ---------- */
   function tt(key, fallback) {
     if (window.SGB_i18n && typeof window.SGB_i18n.t === "function") {
@@ -125,49 +136,47 @@
         li.innerHTML =
           "<div class=\"cart-item-img\"><svg viewBox=\"0 0 24 24\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M20.38 3.46L16 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5l-1.62-1.54z\"/><path d=\"M12 21c-1.5-3 2-4.5 0-7.5\" stroke-width=\"2.2\"/></svg></div>" +
           "<div class=\"cart-item-info\">" +
-          "<h4 class=\"cart-item-name\">" + item.name + "</h4>" +
+          "<h4 class=\"cart-item-name\">" + esc(item.name) + "</h4>" +
           "<span class=\"cart-item-price\">" + item.price + " €</span>" +
           "<div class=\"cart-item-actions\">" +
           "<div class=\"qty-controls\">" +
-          "<button class=\"qty-btn minus\" data-index=\"" + index + "\">−</button>" +
+          "<button class=\"qty-btn minus\" data-index=\"" + index + "\" aria-label=\"" + tt("cart.qty.minus", "Reducir cantidad") + "\">−</button>" +
           "<span class=\"qty-val\">" + item.qty + "</span>" +
-          "<button class=\"qty-btn plus\" data-index=\"" + index + "\">+</button>" +
+          "<button class=\"qty-btn plus\" data-index=\"" + index + "\" aria-label=\"" + tt("cart.qty.plus", "Aumentar cantidad") + "\">+</button>" +
           "</div>" +
-          "<button class=\"cart-remove\" data-index=\"" + index + "\">" + tt("cart.remove", "Eliminar") + "</button>" +
+          "<button class=\"cart-remove\" data-index=\"" + index + "\" aria-label=\"" + tt("cart.remove.aria", "Eliminar producto") + "\">" + tt("cart.remove", "Eliminar") + "</button>" +
           "</div>" +
           "</div>";
         cartItemsList.appendChild(li);
       });
 
       if (cartTotalPrice) cartTotalPrice.textContent = total + " €";
-
-      // Eventos de botones
-      cartItemsList.querySelectorAll(".qty-btn.plus").forEach(function (b) {
-        b.addEventListener("click", function () {
-          var idx = parseInt(b.dataset.index);
-          cart[idx].qty += 1;
-          saveCart();
-        });
-      });
-      cartItemsList.querySelectorAll(".qty-btn.minus").forEach(function (b) {
-        b.addEventListener("click", function () {
-          var idx = parseInt(b.dataset.index);
-          if (cart[idx].qty > 1) {
-            cart[idx].qty -= 1;
-          } else {
-            cart.splice(idx, 1);
-          }
-          saveCart();
-        });
-      });
-      cartItemsList.querySelectorAll(".cart-remove").forEach(function (b) {
-        b.addEventListener("click", function () {
-          var idx = parseInt(b.dataset.index);
-          cart.splice(idx, 1);
-          saveCart();
-        });
-      });
     }
+  }
+
+  /* Delegación de eventos para el carrito */
+  if (cartItemsList) {
+    cartItemsList.addEventListener("click", function (e) {
+      var btn = e.target.closest("button");
+      if (!btn || !btn.dataset.index) return;
+      var idx = parseInt(btn.dataset.index, 10);
+      if (isNaN(idx) || idx < 0 || idx >= cart.length) return;
+
+      if (btn.classList.contains("plus")) {
+        cart[idx].qty += 1;
+        saveCart();
+      } else if (btn.classList.contains("minus")) {
+        if (cart[idx].qty > 1) {
+          cart[idx].qty -= 1;
+        } else {
+          cart.splice(idx, 1);
+        }
+        saveCart();
+      } else if (btn.classList.contains("cart-remove")) {
+        cart.splice(idx, 1);
+        saveCart();
+      }
+    });
   }
 
   function openCart() {
@@ -444,11 +453,12 @@
         var html = "";
         if (t.type === "video") {
           html += "<div class=\"test-media\">";
-          if (t.videoUrl.includes("youtube.com") || t.videoUrl.includes("youtu.be")) {
-             // Simplificación para el ejemplo
-             html += "<div style=\"display:grid;place-items:center;height:100%;color:#fff;font-size:0.8rem\">YouTube Video</div>";
+          // Basic validation for URL
+          var safeUrl = (t.videoUrl || "").replace(/"/g, "&quot;");
+          if (safeUrl.indexOf("youtube.com") !== -1 || safeUrl.indexOf("youtu.be") !== -1) {
+             html += "<div style=\"display:grid;place-items:center;height:100%;background:#000;color:#fff;font-size:0.8rem\">YouTube Video Placeholder</div>";
           } else {
-             html += "<video src=\"" + t.videoUrl + "\" controls muted></video>";
+             html += "<video src=\"" + safeUrl + "\" controls muted></video>";
           }
           html += "</div>";
         }
@@ -456,36 +466,36 @@
         html += "<div class=\"test-card-body\">";
         if (t.type === "text") {
           html += "<span class=\"test-quote-mark\" aria-hidden=\"true\">“</span>";
-          html += "<p class=\"test-text\">" + t.content + "</p>";
+          html += "<p class=\"test-text\">" + esc(t.content) + "</p>";
         } else {
-          html += "<h4 class=\"test-video-caption\">" + (t.caption || tt("test.video.default", "Testimonio en vídeo")) + "</h4>";
+          html += "<h4 class=\"test-video-caption\">" + esc(t.caption || tt("test.video.default", "Testimonio en vídeo")) + "</h4>";
         }
 
         html += "<div class=\"test-foot\">";
         var initial = (t.name || "?").charAt(0).toUpperCase();
-        html += "<div class=\"test-avatar role-" + (t.role || "other") + "\">" + initial + "</div>";
+        html += "<div class=\"test-avatar role-" + (t.role || "other") + "\">" + esc(initial) + "</div>";
         html += "<div class=\"test-author\">";
-        html += "<strong>" + t.name + "</strong>";
-        html += "<span>" + tt("test.role." + t.role, t.role) + "</span>";
+        html += "<strong>" + esc(t.name) + "</strong>";
+        html += "<span>" + esc(tt("test.role." + t.role, t.role)) + "</span>";
         html += "</div>";
         html += "</div>";
 
         html += "<div class=\"test-badges\">";
         if (t.verified) {
-          html += "<span class=\"test-badge verified\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6L9 17l-5-5\"/></svg>" + tt("test.badge.verified", "Verificado") + "</span>";
+          html += "<span class=\"test-badge verified\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6L9 17l-5-5\"/></svg>" + esc(tt("test.badge.verified", "Verificado")) + "</span>";
         } else {
-          html += "<span class=\"test-badge pending\">" + tt("test.badge.pending", "Pendiente") + "</span>";
+          html += "<span class=\"test-badge pending\">" + esc(tt("test.badge.pending", "Pendiente")) + "</span>";
         }
         if (t.type === "video") {
           html += "<span class=\"test-badge video-badge\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"5\" width=\"14\" height=\"14\" rx=\"3\"/><path d=\"m22 8-6 4 6 4z\"/></svg>Video</span>";
         }
-        html += "<time class=\"test-date\">" + t.date + "</time>";
+        html += "<time class=\"test-date\">" + esc(t.date) + "</time>";
         html += "</div>";
 
         html += "<div class=\"test-actions\">";
         html += "<button class=\"test-btn-action support-btn\" data-id=\"" + t.id + "\">";
         html += "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.61a5.5 5.5 0 0 0 0-7.78z\"/></svg>";
-        html += "<span>" + (t.likes || 0) + "</span>";
+        html += "<span>" + parseInt(t.likes || 0, 10) + "</span>";
         html += "</button>";
         html += "<button class=\"test-btn-action share-btn\" data-id=\"" + t.id + "\">";
         html += "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13\"/></svg>";
@@ -494,19 +504,28 @@
 
         html += "</div>";
         card.innerHTML = html;
-
-        // Eventos para esta tarjeta
-        card.querySelector(".support-btn").addEventListener("click", function () {
-          toggleTestLike(t.id);
-        });
-        card.querySelector(".share-btn").addEventListener("click", function () {
-          var shareText = t.type === "text" ? t.content : (t.caption || "Testimonio SGB");
-          shareContent("SGB · " + t.name, shareText);
-        });
-
         testGrid.appendChild(card);
       });
     }
+  }
+
+  /* Delegación de eventos para testimonios */
+  if (testGrid) {
+    testGrid.addEventListener("click", function (e) {
+      var btn = e.target.closest("button");
+      if (!btn || !btn.dataset.id) return;
+      var id = parseInt(btn.dataset.id, 10);
+      var tests = getTestimonios();
+      var t = tests.find(function (item) { return item.id === id; });
+      if (!t) return;
+
+      if (btn.classList.contains("support-btn")) {
+        toggleTestLike(id);
+      } else if (btn.classList.contains("share-btn")) {
+        var shareText = t.type === "text" ? t.content : (t.caption || "Testimonio SGB");
+        shareContent("SGB · " + t.name, shareText);
+      }
+    });
   }
 
   /* Filtros */
@@ -1203,4 +1222,25 @@
   });
 
   loadMilestones();
+
+  /* ---------- Red de Apoyo (Filtros) ---------- */
+  var regionTabs = doc.querySelectorAll(".region-tab");
+  var assocCards = doc.querySelectorAll(".assoc-card");
+
+  regionTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      regionTabs.forEach(function (t) { t.classList.remove("active"); });
+      tab.classList.add("active");
+
+      var region = tab.dataset.region;
+      assocCards.forEach(function (card) {
+        if (region === "all" || card.dataset.region === region) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+
 })();
