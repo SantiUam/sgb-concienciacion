@@ -2264,3 +2264,112 @@ body.high-contrast .tts-btn {
 [data-theme="dark"] .stat-viz .bar-item { background: #334155; }
 [data-theme="dark"] .stat-viz .dot { background: #334155; }
 [data-theme="dark"] .checklist-wrapper { background: #1e293b; border-color: #334155; }
+
+/* ---------- Hitos de Recuperación ---------- */
+.milestones-grid {
+  margin-top: 40px;
+}
+.milestone-card {
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+  border-radius: 24px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .4s var(--ease);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.milestone-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--teal-300);
+  box-shadow: var(--shadow-lg);
+}
+.milestone-badge {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+  transition: all .5s var(--ease);
+}
+.milestone-card.unlocked .milestone-badge {
+  background: var(--teal-500);
+  color: #fff;
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+}
+.milestone-check {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 28px;
+  height: 28px;
+  background: var(--bg);
+  color: var(--teal-600);
+  border: 2px solid var(--teal-500);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.milestone-card.unlocked .milestone-check {
+  opacity: 1;
+  transform: scale(1);
+}
+.milestone-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+  color: var(--ink);
+  transition: color .3s var(--ease);
+}
+.milestone-card.unlocked h3 {
+  color: var(--teal-700);
+}
+.milestone-card p {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+.unlocked-label {
+  margin-top: 15px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--teal-600);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .3s var(--ease);
+}
+.milestone-card.unlocked .unlocked-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .milestone-card { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .milestone-badge { background: #334155; }
+[data-theme="dark"] .milestone-card.unlocked h3 { color: var(--teal-400); }
+[data-theme="dark"] .milestone-check { background: #1e293b; }
+
+@media (max-width: 992px) {
+  .milestones-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .milestones-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .milestones-grid { grid-template-columns: 1fr; }
+}

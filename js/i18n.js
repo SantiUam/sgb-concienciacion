@@ -359,7 +359,21 @@
       "care.check.4": "Proporcionar apoyo emocional y descanso adecuado.",
       "care.check.5": "Mantener un registro de medicación y citas médicas.",
       "care.warning.title": "SEÑALES DE ALERTA (Consultar urgente)",
-      "care.warning.text": "Dificultad súbita para respirar, atragantamientos frecuentes o debilidad que vuelve a ascender rápidamente."
+      "care.warning.text": "Dificultad súbita para respirar, atragantamientos frecuentes o debilidad que vuelve a ascender rápidamente.",
+      "miles.title": "Hitos de Recuperación",
+      "miles.kicker": "Tu camino al éxito",
+      "miles.lead": "Cada pequeña victoria es un paso gigante. Marca tus progresos y celebra cada hito superado.",
+      "miles.1.h": "Respiración Autónoma",
+      "miles.1.d": "Capacidad de respirar sin asistencia mecánica.",
+      "miles.2.h": "Primer Movimiento",
+      "miles.2.d": "Cualquier movimiento voluntario tras la parálisis.",
+      "miles.3.h": "Primer Paso",
+      "miles.3.d": "Volver a ponerse en pie y dar los primeros pasos.",
+      "miles.4.h": "Independencia Diaria",
+      "miles.4.d": "Realizar tareas básicas como comer o vestirse solo.",
+      "miles.5.h": "Vuelta a la Rutina",
+      "miles.5.d": "Regreso al trabajo, estudios o actividades habituales.",
+      "miles.unlocked": "¡Hito alcanzado!"
     },
 
     /* ---------- English ---------- */
@@ -708,7 +722,21 @@
       "care.check.4": "Provide emotional support and adequate rest.",
       "care.check.5": "Keep a record of medication and medical appointments.",
       "care.warning.title": "RED FLAGS (Consult urgently)",
-      "care.warning.text": "Sudden difficulty breathing, frequent choking, or weakness that starts ascending rapidly again."
+      "care.warning.text": "Sudden difficulty breathing, frequent choking, or weakness that starts ascending rapidly again.",
+      "miles.title": "Recovery Milestones",
+      "miles.kicker": "Your path to success",
+      "miles.lead": "Every small victory is a giant step. Track your progress and celebrate each milestone achieved.",
+      "miles.1.h": "Autonomous Breathing",
+      "miles.1.d": "Ability to breathe without mechanical assistance.",
+      "miles.2.h": "First Movement",
+      "miles.2.d": "Any voluntary movement after paralysis.",
+      "miles.3.h": "First Step",
+      "miles.3.d": "Standing up again and taking the first steps.",
+      "miles.4.h": "Daily Independence",
+      "miles.4.d": "Performing basic tasks like eating or dressing alone.",
+      "miles.5.h": "Back to Routine",
+      "miles.5.d": "Return to work, studies or regular activities.",
+      "miles.unlocked": "Milestone achieved!"
     },
 
     /* ---------- Deutsch ---------- */
@@ -1057,7 +1085,21 @@
       "care.check.4": "Emotionale Unterstützung und angemessene Ruhe bieten.",
       "care.check.5": "Aufzeichnungen über Medikamente und Arzttermine führen.",
       "care.warning.title": "WARNSIGNALE (Dringend konsultieren)",
-      "care.warning.text": "Plötzliche Atembeschwerden, häufiges Verschlucken oder Schwäche, die wieder schnell aufsteigt."
+      "care.warning.text": "Plötzliche Atembeschwerden, häufiges Verschlucken oder Schwäche, die wieder schnell aufsteigt.",
+      "miles.title": "Meilensteine der Erholung",
+      "miles.kicker": "Dein Weg zum Erfolg",
+      "miles.lead": "Jeder kleine Sieg ist ein Riesenschritt. Verfolge deine Fortschritte und feiere jeden erreichten Meilenstein.",
+      "miles.1.h": "Eigenständiges Atmen",
+      "miles.1.d": "Fähigkeit, ohne mechanische Unterstützung zu atmen.",
+      "miles.2.h": "Erste Bewegung",
+      "miles.2.d": "Jede willkürliche Bewegung nach der Lähmung.",
+      "miles.3.h": "Erster Schritt",
+      "miles.3.d": "Wieder aufstehen und die ersten Schritte machen.",
+      "miles.4.h": "Tägliche Unabhängigkeit",
+      "miles.4.d": "Grundlegende Aufgaben wie Essen oder Anziehen alleine erledigen.",
+      "miles.5.h": "Zurück zur Routine",
+      "miles.5.d": "Rückkehr zur Arbeit, zum Studium oder zu regelmäßigen Aktivitäten.",
+      "miles.unlocked": "Meilenstein erreicht!"
     },
 
     /* ---------- Français ---------- */
@@ -1406,7 +1448,21 @@
       "care.check.4": "Fournir un soutien émotionnel et un repos adéquat.",
       "care.check.5": "Tenir un registre des médicaments et des rendez-vous médicaux.",
       "care.warning.title": "SIGNAUX D'ALERTE (Consulter d'urgence)",
-      "care.warning.text": "Difficulté soudaine à respirer, étouffements fréquents ou faiblesse qui recommence à monter rapidement."
+      "care.warning.text": "Difficulté soudaine à respirer, étouffements fréquents ou faiblesse qui recommence à monter rapidement.",
+      "miles.title": "Jalons de Récupération",
+      "miles.kicker": "Votre chemin vers le succès",
+      "miles.lead": "Chaque petite victoire est un pas de géant. Suivez vos progrès et célébrez chaque jalon atteint.",
+      "miles.1.h": "Respiration Autonome",
+      "miles.1.d": "Capacité à respirer sans assistance mécanique.",
+      "miles.2.h": "Premier Mouvement",
+      "miles.2.d": "Tout mouvement volontaire après la paralysie.",
+      "miles.3.h": "Premier Pas",
+      "miles.3.d": "Se remettre debout et faire les premiers pas.",
+      "miles.4.h": "Indépendance Quotidienne",
+      "miles.4.d": "Effectuer des tâches de base comme manger ou s'habiller seul.",
+      "miles.5.h": "Retour à la Routine",
+      "miles.5.d": "Retour au travail, aux études ou aux activités habituelles.",
+      "miles.unlocked": "Jalon atteint !"
     }
   };
 

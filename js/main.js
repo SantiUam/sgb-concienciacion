@@ -1153,4 +1153,54 @@
   });
 
   loadChecklist();
+
+  /* ---------- Seguimiento de Hitos ---------- */
+  var milestoneCards = doc.querySelectorAll(".milestone-card");
+  var STORAGE_MILESTONES_KEY = "sgb-milestones";
+
+  function loadMilestones() {
+    try {
+      var stored = localStorage.getItem(STORAGE_MILESTONES_KEY);
+      if (stored) {
+        var data = JSON.parse(stored);
+        milestoneCards.forEach(function (card) {
+          var id = card.dataset.milestone;
+          if (data[id]) {
+            card.classList.add("unlocked");
+          }
+        });
+      }
+    } catch (e) {}
+  }
+
+  function saveMilestones() {
+    var data = {};
+    milestoneCards.forEach(function (card) {
+      var id = card.dataset.milestone;
+      data[id] = card.classList.contains("unlocked");
+    });
+    try {
+      localStorage.setItem(STORAGE_MILESTONES_KEY, JSON.stringify(data));
+    } catch (e) {}
+  }
+
+  milestoneCards.forEach(function (card) {
+    function toggleMilestone() {
+      var isUnlocked = card.classList.toggle("unlocked");
+      if (isUnlocked) {
+        showToast(tt("miles.unlocked", "¡Hito alcanzado!"));
+      }
+      saveMilestones();
+    }
+
+    card.addEventListener("click", toggleMilestone);
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleMilestone();
+      }
+    });
+  });
+
+  loadMilestones();
 })();
