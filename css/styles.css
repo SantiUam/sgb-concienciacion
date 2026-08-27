@@ -1978,6 +1978,56 @@ body.high-contrast p, body.high-contrast span, body.high-contrast li {
   color: #fff !important;
 }
 
+/* ---------- Text to Speech ---------- */
+.title-with-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+#concienciacion .title-with-action { justify-content: flex-start; }
+
+.tts-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--teal-600);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all .2s var(--ease);
+  flex-shrink: 0;
+}
+.tts-btn:hover {
+  background: var(--teal-50);
+  border-color: var(--teal-300);
+  transform: scale(1.1);
+}
+.tts-btn.playing {
+  background: var(--teal-500);
+  color: #fff;
+  border-color: var(--teal-600);
+  animation: pulseAudio 1.5s infinite;
+}
+
+@keyframes pulseAudio {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(20, 184, 166, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); }
+}
+
+[data-theme="dark"] .tts-btn { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .tts-btn:hover { background: #334155; }
+
+body.high-contrast .tts-btn {
+  background: #000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
 /* ---------- Botón Share Footer & Volver arriba ---------- */
 .footer-share-btn {
   background: transparent;

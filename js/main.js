@@ -1020,6 +1020,62 @@
     }
   });
 
+  /* ---------- Text to Speech ---------- */
+  var ttsButtons = doc.querySelectorAll(".tts-btn");
+  var synth = window.speechSynthesis;
+  var currentUtterance = null;
+
+  function stopReading() {
+    if (synth) {
+      synth.cancel();
+      ttsButtons.forEach(function (btn) {
+        btn.classList.remove("playing");
+        btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+      });
+    }
+  }
+
+  if (ttsButtons.length > 0 && synth) {
+    ttsButtons.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var targetId = btn.dataset.tts;
+        var targetSection = doc.querySelector(targetId);
+
+        if (btn.classList.contains("playing")) {
+          stopReading();
+          return;
+        }
+
+        stopReading();
+
+        if (targetSection) {
+          var textToRead = targetSection.innerText;
+          // Limpiar un poco el texto (quitar el propio botón si se cuela)
+          textToRead = textToRead.replace(/Escuchar contenido|Listen to content|Inhalt anhören|Écouter le contenu/g, "");
+          
+          currentUtterance = new SpeechSynthesisUtterance(textToRead);
+          currentUtterance.lang = doc.documentElement.lang || "es";
+          
+          currentUtterance.onend = function () {
+            btn.classList.remove("playing");
+            btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+          };
+
+          btn.classList.add("playing");
+          btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+          
+          synth.speak(currentUtterance);
+        }
+      });
+    });
+  }
+
+  // Parar lectura si se cambia de idioma
+  doc.querySelectorAll(".lang-option").forEach(function (opt) {
+    opt.addEventListener("click", stopReading);
+  });
+
   /* ---------- Mitos ---------- */
   var flipCards = doc.querySelectorAll(".flip-card");
   flipCards.forEach(function (card) {

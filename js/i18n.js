@@ -339,7 +339,10 @@
       "myths.2.m": "Nunca te recuperas del todo.",
       "myths.2.r": "FALSO. La gran mayoría se recupera totalmente o con secuelas mínimas, aunque el proceso es lento.",
       "myths.3.m": "Es solo cansancio extremo.",
-      "myths.3.r": "FALSO. Es una parálisis muscular real causada por el daño a los nervios periféricos."
+      "myths.3.r": "FALSO. Es una parálisis muscular real causada por el daño a los nervios periféricos.",
+      "tts.play": "Escuchar contenido",
+      "tts.stop": "Detener lectura",
+      "tts.unsupported": "Tu navegador no soporta la lectura de voz."
     },
 
     /* ---------- English ---------- */
@@ -668,7 +671,10 @@
       "myths.2.m": "You never fully recover.",
       "myths.2.r": "FALSE. The vast majority recover fully or with minimal lingering effects, although the process is slow.",
       "myths.3.m": "It is just extreme fatigue.",
-      "myths.3.r": "FALSE. It is real muscular paralysis caused by damage to the peripheral nerves."
+      "myths.3.r": "FALSE. It is real muscular paralysis caused by damage to the peripheral nerves.",
+      "tts.play": "Listen to content",
+      "tts.stop": "Stop reading",
+      "tts.unsupported": "Your browser does not support text-to-speech."
     },
 
     /* ---------- Deutsch ---------- */
@@ -997,7 +1003,10 @@
       "myths.2.m": "Man erholt sich nie vollständig.",
       "myths.2.r": "FALSCH. Die große Mehrheit erholt sich vollständig oder mit minimalen Spätfolgen, obwohl der Prozess langsam ist.",
       "myths.3.m": "Es ist nur extreme Müdigkeit.",
-      "myths.3.r": "FALSCH. Es handelt sich um eine echte Muskellähmung, die durch Schäden an den peripheren Nerven verursacht wird."
+      "myths.3.r": "FALSCH. Es handelt sich um eine echte Muskellähmung, die durch Schäden an den peripheren Nerven verursacht wird.",
+      "tts.play": "Inhalt anhören",
+      "tts.stop": "Wiedergabe stoppen",
+      "tts.unsupported": "Dein Browser unterstützt keine Sprachausgabe."
     },
 
     /* ---------- Français ---------- */
@@ -1326,7 +1335,10 @@
       "myths.2.m": "On ne s'en remet jamais complètement.",
       "myths.2.r": "FAUX. La grande majorité se rétablit totalement ou avec des séquelles minimes, bien que le processus soit lent.",
       "myths.3.m": "C'est juste une fatigue extrême.",
-      "myths.3.r": "FAUX. Il s'agit d'une réelle paralysie musculaire causée par des dommages aux nerfs périphériques."
+      "myths.3.r": "FAUX. Il s'agit d'une réelle paralysie musculaire causée par des dommages aux nerfs périphériques.",
+      "tts.play": "Écouter le contenu",
+      "tts.stop": "Arrêter la lecture",
+      "tts.unsupported": "Votre navigateur ne supporte pas la synthèse vocale."
     }
   };
 
