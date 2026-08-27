@@ -1020,6 +1020,14 @@
     }
   });
 
+  /* ---------- Mitos ---------- */
+  var flipCards = doc.querySelectorAll(".flip-card");
+  flipCards.forEach(function (card) {
+    card.addEventListener("click", function () {
+      card.classList.toggle("flipped");
+    });
+  });
+
   var backToTopBtn = doc.getElementById("backToTop");
   if (backToTopBtn) {
     window.addEventListener("scroll", function () {

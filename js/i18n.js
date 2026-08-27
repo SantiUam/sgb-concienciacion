@@ -330,7 +330,16 @@
       "access.contrast": "Alto contraste",
       "access.font.plus": "Aumentar fuente",
       "access.font.minus": "Reducir fuente",
-      "access.reset": "Restablecer"
+      "access.reset": "Restablecer",
+      "myths.title": "Mitos vs Realidades",
+      "myths.kicker": "Desmintiendo conceptos",
+      "myths.click": "Haz clic para ver la realidad",
+      "myths.1.m": "Es una enfermedad contagiosa.",
+      "myths.1.r": "FALSO. El SGB es un trastorno autoinmune, no se transmite de persona a persona.",
+      "myths.2.m": "Nunca te recuperas del todo.",
+      "myths.2.r": "FALSO. La gran mayoría se recupera totalmente o con secuelas mínimas, aunque el proceso es lento.",
+      "myths.3.m": "Es solo cansancio extremo.",
+      "myths.3.r": "FALSO. Es una parálisis muscular real causada por el daño a los nervios periféricos."
     },
 
     /* ---------- English ---------- */
@@ -650,7 +659,16 @@
       "access.contrast": "High contrast",
       "access.font.plus": "Increase font",
       "access.font.minus": "Decrease font",
-      "access.reset": "Reset"
+      "access.reset": "Reset",
+      "myths.title": "Myths vs Realities",
+      "myths.kicker": "Debunking concepts",
+      "myths.click": "Click to see the reality",
+      "myths.1.m": "It is a contagious disease.",
+      "myths.1.r": "FALSE. GBS is an autoimmune disorder, it is not transmitted from person to person.",
+      "myths.2.m": "You never fully recover.",
+      "myths.2.r": "FALSE. The vast majority recover fully or with minimal lingering effects, although the process is slow.",
+      "myths.3.m": "It is just extreme fatigue.",
+      "myths.3.r": "FALSE. It is real muscular paralysis caused by damage to the peripheral nerves."
     },
 
     /* ---------- Deutsch ---------- */
@@ -970,7 +988,16 @@
       "access.contrast": "Hoher Kontrast",
       "access.font.plus": "Schrift vergrößern",
       "access.font.minus": "Schrift verkleinern",
-      "access.reset": "Zurücksetzen"
+      "access.reset": "Zurücksetzen",
+      "myths.title": "Mythen vs. Fakten",
+      "myths.kicker": "Konzepte entlarven",
+      "myths.click": "Klicke, um die Realität zu sehen",
+      "myths.1.m": "Es ist eine ansteckende Krankheit.",
+      "myths.1.r": "FALSCH. GBS ist eine Autoimmunerkrankung, sie wird nicht von Mensch zu Mensch übertragen.",
+      "myths.2.m": "Man erholt sich nie vollständig.",
+      "myths.2.r": "FALSCH. Die große Mehrheit erholt sich vollständig oder mit minimalen Spätfolgen, obwohl der Prozess langsam ist.",
+      "myths.3.m": "Es ist nur extreme Müdigkeit.",
+      "myths.3.r": "FALSCH. Es handelt sich um eine echte Muskellähmung, die durch Schäden an den peripheren Nerven verursacht wird."
     },
 
     /* ---------- Français ---------- */
@@ -1290,7 +1317,16 @@
       "access.contrast": "Contraste élevé",
       "access.font.plus": "Agrandir la police",
       "access.font.minus": "Réduire la police",
-      "access.reset": "Réinitialiser"
+      "access.reset": "Réinitialiser",
+      "myths.title": "Mythes vs Réalités",
+      "myths.kicker": "Démystifier les concepts",
+      "myths.click": "Cliquez pour voir la réalité",
+      "myths.1.m": "C'est une maladie contagieuse.",
+      "myths.1.r": "FAUX. Le SGB est un trouble auto-immun, il ne se transmet pas de personne à personne.",
+      "myths.2.m": "On ne s'en remet jamais complètement.",
+      "myths.2.r": "FAUX. La grande majorité se rétablit totalement ou avec des séquelles minimes, bien que le processus soit lent.",
+      "myths.3.m": "C'est juste une fatigue extrême.",
+      "myths.3.r": "FAUX. Il s'agit d'une réelle paralysie musculaire causée par des dommages aux nerfs périphériques."
     }
   };
 
