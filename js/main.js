@@ -926,4 +926,30 @@
       }, 1000);
     });
   }
+
+  /* ---------- Footer Share & Back to Top ---------- */
+  var footerShareBtn = doc.getElementById("footerShareBtn");
+  if (footerShareBtn) {
+    footerShareBtn.addEventListener("click", function () {
+      shareContent("SGB · Concienciación", "Visita esta web sobre el Síndrome de Guillain-Barré.");
+    });
+  }
+
+  var backToTopBtn = doc.getElementById("backToTop");
+  if (backToTopBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    });
+
+    backToTopBtn.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
 })();

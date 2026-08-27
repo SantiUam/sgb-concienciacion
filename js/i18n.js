@@ -303,7 +303,9 @@
       "vol.ph.skills": "Ej.: Traducción, diseño, redes sociales, apoyo emocional...",
       "vol.field.msg": "¿Por qué quieres ayudar?",
       "vol.btn.submit": "Enviar solicitud",
-      "vol.toast.success": "¡Gracias por tu interés! Nos pondremos en contacto contigo pronto."
+      "vol.toast.success": "¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.",
+      "footer.share": "Compartir web",
+      "back.top": "Volver arriba"
     },
 
     /* ---------- English ---------- */
@@ -596,7 +598,9 @@
       "vol.ph.skills": "e.g., Translation, design, social media, emotional support...",
       "vol.field.msg": "Why do you want to help?",
       "vol.btn.submit": "Send application",
-      "vol.toast.success": "Thank you for your interest! We will contact you soon."
+      "vol.toast.success": "Thank you for your interest! We will contact you soon.",
+      "footer.share": "Share website",
+      "back.top": "Back to top"
     },
 
     /* ---------- Deutsch ---------- */
@@ -889,7 +893,9 @@
       "vol.ph.skills": "z. B. Übersetzung, Design, Social Media, emotionale Unterstützung...",
       "vol.field.msg": "Warum möchtest du helfen?",
       "vol.btn.submit": "Bewerbung senden",
-      "vol.toast.success": "Vielen Dank für dein Interesse! Wir werden uns bald bei dir melden."
+      "vol.toast.success": "Vielen Dank für dein Interesse! Wir werden uns bald bei dir melden.",
+      "footer.share": "Webseite teilen",
+      "back.top": "Nach oben"
     },
 
     /* ---------- Français ---------- */
@@ -1182,7 +1188,9 @@
       "vol.ph.skills": "Ex. : Traduction, design, réseaux sociaux, soutien émotionnel...",
       "vol.field.msg": "Pourquoi voulez-vous aider ?",
       "vol.btn.submit": "Envoyer la demande",
-      "vol.toast.success": "Merci pour votre intérêt ! Nous vous contacterons bientôt."
+      "vol.toast.success": "Merci pour votre intérêt ! Nous vous contacterons bientôt.",
+      "footer.share": "Partager le site",
+      "back.top": "Retour en haut"
     }
   };
 
