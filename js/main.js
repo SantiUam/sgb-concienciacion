@@ -927,6 +927,35 @@
     });
   }
 
+  /* ---------- Glosario ---------- */
+  var glossarySearch = doc.getElementById("glossarySearch");
+  var glossaryItems = doc.querySelectorAll(".glossary-item");
+  var glossaryEmpty = doc.getElementById("glossaryEmpty");
+
+  if (glossarySearch) {
+    glossarySearch.addEventListener("input", function () {
+      var query = glossarySearch.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      var count = 0;
+
+      glossaryItems.forEach(function (item) {
+        var term = item.dataset.term.toLowerCase();
+        var title = item.querySelector("h3").innerText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        var text = item.querySelector("p").innerText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        if (term.includes(query) || title.includes(query) || text.includes(query)) {
+          item.style.display = "";
+          count++;
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      if (glossaryEmpty) {
+        glossaryEmpty.hidden = count > 0;
+      }
+    });
+  }
+
   /* ---------- Footer Share & Back to Top ---------- */
   var footerShareBtn = doc.getElementById("footerShareBtn");
   if (footerShareBtn) {
@@ -934,6 +963,62 @@
       shareContent("SGB · Concienciación", "Visita esta web sobre el Síndrome de Guillain-Barré.");
     });
   }
+
+  /* ---------- Accesibilidad ---------- */
+  var accessPanel = doc.getElementById("accessPanel");
+  var accessToggle = doc.getElementById("accessToggle");
+  var toggleContrast = doc.getElementById("toggleContrast");
+  var fontPlus = doc.getElementById("fontPlus");
+  var fontMinus = doc.getElementById("fontMinus");
+  var resetAccess = doc.getElementById("resetAccess");
+  var fontSizeMultiplier = 1;
+
+  if (accessToggle) {
+    accessToggle.addEventListener("click", function () {
+      accessPanel.classList.toggle("open");
+    });
+  }
+
+  if (toggleContrast) {
+    toggleContrast.addEventListener("click", function () {
+      doc.body.classList.toggle("high-contrast");
+      toggleContrast.classList.toggle("active");
+    });
+  }
+
+  if (fontPlus) {
+    fontPlus.addEventListener("click", function () {
+      if (fontSizeMultiplier < 1.5) {
+        fontSizeMultiplier += 0.1;
+        doc.documentElement.style.fontSize = (fontSizeMultiplier * 100) + "%";
+      }
+    });
+  }
+
+  if (fontMinus) {
+    fontMinus.addEventListener("click", function () {
+      if (fontSizeMultiplier > 0.8) {
+        fontSizeMultiplier -= 0.1;
+        doc.documentElement.style.fontSize = (fontSizeMultiplier * 100) + "%";
+      }
+    });
+  }
+
+  if (resetAccess) {
+    resetAccess.addEventListener("click", function () {
+      doc.body.classList.remove("high-contrast");
+      if (toggleContrast) toggleContrast.classList.remove("active");
+      fontSizeMultiplier = 1;
+      doc.documentElement.style.fontSize = "";
+    });
+  }
+
+  // Cerrar al hacer clic fuera
+  doc.addEventListener("click", function (e) {
+    if (accessPanel && !accessPanel.contains(e.target) && accessPanel.classList.contains("open")) {
+      accessPanel.classList.remove("open");
+    }
+  });
 
   var backToTopBtn = doc.getElementById("backToTop");
   if (backToTopBtn) {
