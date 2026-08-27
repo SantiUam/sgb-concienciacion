@@ -636,7 +636,7 @@
           </p>
         </div>
 
-        <div class="help grid-3">
+        <div class="help grid-4">
           <article class="help-card reveal">
             <div class="help-icon">
               <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.61a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -662,6 +662,15 @@
             <h3 data-i18n="ayuda.h3.title">Acompaña</h3>
             <p data-i18n="ayuda.h3.text">Escucha y apoya a pacientes y familias. Una red de apoyo reduce el aislamiento.</p>
             <a href="#concienciacion" class="link-arrow"><span data-i18n="ayuda.h3.link">Conoce la causa</span> <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="help-card reveal">
+            <div class="help-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 data-i18n="ayuda.h4.title">Hazte Voluntario</h3>
+            <p data-i18n="ayuda.h4.text">Dona tu tiempo y habilidades para ayudar a difundir el mensaje y apoyar a la comunidad.</p>
+            <button class="link-arrow" id="openVolunteerModal"><span data-i18n="ayuda.h4.link">Unirse ahora</span> <span aria-hidden="true">→</span></button>
           </article>
         </div>
 
@@ -999,6 +1008,40 @@
         <div class="form-actions">
           <button type="button" class="btn btn-ghost" data-test-close data-i18n="test.cancel">Cancelar</button>
           <button type="submit" class="btn btn-primary" data-i18n="test.submit">Publicar testimonio</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL VOLUNTARIADO ===================== -->
+  <div class="modal" id="volunteerModal" aria-hidden="true">
+    <div class="modal-overlay" id="volOverlay"></div>
+    <div class="modal-content reveal-in" role="dialog" aria-modal="true" aria-labelledby="volTitle">
+      <button class="modal-close" id="closeVolModal" aria-label="Cerrar modal" data-i18n-attr="aria-label:test.cancel">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+
+      <h3 id="volTitle" data-i18n="vol.modal.title">Únete como Voluntario</h3>
+      <form id="volunteerForm" class="form-grid">
+        <div class="form-group">
+          <label for="volName" data-i18n="vol.field.name">Nombre completo</label>
+          <input type="text" id="volName" required>
+        </div>
+        <div class="form-group">
+          <label for="volEmail" data-i18n="vol.field.email">Correo electrónico</label>
+          <input type="email" id="volEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="volSkills" data-i18n="vol.field.skills">Habilidades / Intereses</label>
+          <input type="text" id="volSkills" data-i18n-attr="placeholder:vol.ph.skills" placeholder="Ej.: Traducción, diseño, redes sociales, apoyo emocional...">
+        </div>
+        <div class="form-group">
+          <label for="volMsg" data-i18n="vol.field.msg">¿Por qué quieres ayudar?</label>
+          <textarea id="volMsg" rows="3"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="cancelVol" data-i18n="test.cancel">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-i18n="vol.btn.submit">Enviar solicitud</button>
         </div>
       </form>
     </div>

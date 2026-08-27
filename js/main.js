@@ -881,4 +881,49 @@
       }
     });
   }
+
+  /* ---------- Voluntariado ---------- */
+  var volModal = doc.getElementById("volunteerModal");
+  var openVolBtn = doc.getElementById("openVolunteerModal");
+  var closeVolBtn = doc.getElementById("closeVolModal");
+  var cancelVolBtn = doc.getElementById("cancelVol");
+  var volOverlay = doc.getElementById("volOverlay");
+  var volForm = doc.getElementById("volunteerForm");
+
+  function openVolModal() {
+    volModal.classList.add("open");
+    volModal.setAttribute("aria-hidden", "false");
+    doc.body.style.overflow = "hidden";
+  }
+
+  function closeVolModal() {
+    volModal.classList.remove("open");
+    volModal.setAttribute("aria-hidden", "true");
+    doc.body.style.overflow = "";
+  }
+
+  if (openVolBtn) openVolBtn.addEventListener("click", openVolModal);
+  if (closeVolBtn) closeVolBtn.addEventListener("click", closeVolModal);
+  if (cancelVolBtn) cancelVolBtn.addEventListener("click", closeVolModal);
+  if (volOverlay) volOverlay.addEventListener("click", closeVolModal);
+
+  if (volForm) {
+    volForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var btn = volForm.querySelector("button[type='submit']");
+      var originalText = btn.innerText;
+
+      btn.disabled = true;
+      btn.innerText = "...";
+
+      // Simular envío
+      setTimeout(function () {
+        showToast(tt("vol.toast.success", "¡Gracias por tu interés! Nos pondremos en contacto contigo pronto."));
+        volForm.reset();
+        btn.disabled = false;
+        btn.innerText = originalText;
+        closeVolModal();
+      }, 1000);
+    });
+  }
 })();

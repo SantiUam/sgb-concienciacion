@@ -107,6 +107,7 @@ img, svg { display: block; max-width: 100%; }
 
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
 /* ---------- Botones ---------- */
 .btn {
@@ -801,7 +802,7 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .hero-inner { grid-template-columns: 1fr; gap: 36px; }
   .hero-art { order: -1; }
   .ribbon-medal { width: min(240px, 60%); }
@@ -830,7 +831,7 @@ img, svg { display: block; max-width: 100%; }
   .menu-toggle { display: flex; }
   .nav-cta { display: none; }
 
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr; gap: 14px; max-width: 360px; }
   .hero-stats li { flex-direction: row; align-items: baseline; gap: 12px; }
   .hero-stats span { margin-top: 0; }
@@ -841,7 +842,7 @@ img, svg { display: block; max-width: 100%; }
 
 @media (max-width: 420px) {
   .footer-cols { grid-template-columns: 1fr; }
-  .grid-3 { grid-template-columns: 1fr; }
+  .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .container { padding-inline: 18px; }
   .lang-btn { padding: 0 9px; gap: 5px; }
   .lang-menu { min-width: 150px; }

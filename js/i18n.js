@@ -878,7 +878,18 @@
       "toast.like.success": "Danke für deine Unterstützung!",
       "toast.share.fallback": "Link in die Zwischenablage kopiert.",
       "quiz.share.btn": "Ergebnis teilen",
-      "quiz.share.text": "Ich habe beim GBS-Aufklärungs-Quiz {n} erreicht. Teste dein Wissen!"
+      "quiz.share.text": "Ich habe beim GBS-Aufklärungs-Quiz {n} erreicht. Teste dein Wissen!",
+      "ayuda.h4.title": "Werde Freiwilliger",
+      "ayuda.h4.text": "Spende deine Zeit und Fähigkeiten, um die Botschaft zu verbreiten und die Gemeinschaft zu unterstützen.",
+      "ayuda.h4.link": "Jetzt beitreten",
+      "vol.modal.title": "Als Freiwilliger beitreten",
+      "vol.field.name": "Vollständiger Name",
+      "vol.field.email": "E-Mail-Adresse",
+      "vol.field.skills": "Fähigkeiten / Interessen",
+      "vol.ph.skills": "z. B. Übersetzung, Design, Social Media, emotionale Unterstützung...",
+      "vol.field.msg": "Warum möchtest du helfen?",
+      "vol.btn.submit": "Bewerbung senden",
+      "vol.toast.success": "Vielen Dank für dein Interesse! Wir werden uns bald bei dir melden."
     },
 
     /* ---------- Français ---------- */
@@ -1160,7 +1171,18 @@
       "toast.like.success": "Merci pour votre soutien !",
       "toast.share.fallback": "Lien copié dans le presse-papiers.",
       "quiz.share.btn": "Partager le résultat",
-      "quiz.share.text": "J'ai obtenu {n} au Quiz de sensibilisation au SGB. Testez vos connaissances !"
+      "quiz.share.text": "J'ai obtenu {n} au Quiz de sensibilisation au SGB. Testez vos connaissances !",
+      "ayuda.h4.title": "Devenir Bénévole",
+      "ayuda.h4.text": "Donnez de votre temps et de vos compétences pour aider à diffuser le message et soutenir la communauté.",
+      "ayuda.h4.link": "Rejoindre maintenant",
+      "vol.modal.title": "Devenir Bénévole",
+      "vol.field.name": "Nom complet",
+      "vol.field.email": "Adresse e-mail",
+      "vol.field.skills": "Compétences / Intérêts",
+      "vol.ph.skills": "Ex. : Traduction, design, réseaux sociaux, soutien émotionnel...",
+      "vol.field.msg": "Pourquoi voulez-vous aider ?",
+      "vol.btn.submit": "Envoyer la demande",
+      "vol.toast.success": "Merci pour votre intérêt ! Nous vous contacterons bientôt."
     }
   };
 
