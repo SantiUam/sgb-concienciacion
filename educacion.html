@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="nav.concienciacion">Educación - SGB · Concienciación</title>
   <meta name="description" content="Aprende sobre la historia del SGB, desmiente mitos y accede a recursos educativos de calidad." data-i18n-attr="content:meta.description" />
-  <link rel="canonical" href="https://sgb-concienciacion.vercel.app/educacion.html" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,38 +12,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body class="subpage">
-  <header class="header sticky" id="header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <span class="logo-text">SGB <small>Concienciación</small></span>
+  <a href="#main" class="skip-link" data-i18n="skip.content">Saltar al contenido</a>
+
+  <header class="site-header sticky" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio - SGB" data-i18n-attr="aria-label:brand.aria">
+        <span class="brand-text">SGB<span class="brand-dot">.</span></span>
       </a>
-      <nav class="nav" id="navMenu">
-        <ul role="list">
-          <li><a href="index.html" data-i18n="nav.inicio">Inicio</a></li>
-          <li><a href="clinica.html" data-i18n="nav.sintomas">Clínica</a></li>
-          <li><a href="educacion.html" class="active" aria-current="page" data-i18n="nav.concienciacion">Educación</a></li>
-          <li><a href="comunidad.html" data-i18n="nav.testimonios">Comunidad</a></li>
-          <li><a href="tienda.html" data-i18n="nav.merchan">Tienda</a></li>
-          <li><a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <ul class="nav-list" role="list">
+          <li><a href="index.html" class="nav-link" data-i18n="nav.inicio">Inicio</a></li>
+          <li><a href="clinica.html" class="nav-link" data-i18n="nav.sintomas">Clínica</a></li>
+          <li><a href="educacion.html" class="nav-link active" aria-current="page" data-i18n="nav.concienciacion">Educación</a></li>
+          <li><a href="comunidad.html" class="nav-link" data-i18n="nav.testimonios">Comunidad</a></li>
+          <li><a href="tienda.html" class="nav-link" data-i18n="nav.merchan">Tienda</a></li>
+          <li><a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Dashboard</a></li>
         </ul>
       </nav>
-      <div class="nav-actions">
-        <button id="themeToggle" class="theme-toggle">
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" data-i18n-attr="aria-label:attr.theme">
           <svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <main id="main-content">
-    <section class="page-header container">
+  <main id="main">
+    <section class="page-header container reveal">
       <h1 data-i18n="nav.concienciacion">Educación y Recursos</h1>
       <p class="lead">Entender la historia y desmentir mitos es fundamental para la concienciación social.</p>
     </section>
 
     <section id="historia" class="section container">
-      <div class="section-head">
+      <div class="section-head reveal">
+        <span class="kicker">Hitos médicos</span>
         <h2 data-i18n="time.title">Historia del SGB</h2>
       </div>
       <div class="timeline-container reveal">
@@ -71,11 +76,12 @@
 
     <section id="mitos" class="section section-alt">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal center">
+          <span class="kicker">Interactúa</span>
           <h2 data-i18n="myths.title">Mitos vs Realidades</h2>
         </div>
-        <div class="myths-grid grid-3">
-          <article class="flip-card reveal">
+        <div class="myths-grid grid-3 reveal">
+          <article class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="myth-badge">MITO</div>
@@ -87,7 +93,7 @@
               </div>
             </div>
           </article>
-          <article class="flip-card reveal">
+          <article class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="myth-badge">MITO</div>
@@ -96,6 +102,18 @@
               <div class="flip-card-back">
                 <div class="reality-badge">REALIDAD</div>
                 <p>El 85% logra recuperación funcional favorable.</p>
+              </div>
+            </div>
+          </article>
+          <article class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="myth-badge">MITO</div>
+                <p>Cualquier vacuna lo causa.</p>
+              </div>
+              <div class="flip-card-back">
+                <div class="reality-badge">REALIDAD</div>
+                <p>El riesgo tras vacunación es extremadamente bajo comparado con infecciones.</p>
               </div>
             </div>
           </article>

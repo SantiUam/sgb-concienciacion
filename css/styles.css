@@ -2542,3 +2542,97 @@ body.high-contrast .tts-btn {
 [data-theme="dark"] .assoc-header h3 { color: var(--teal-400); }
 [data-theme="dark"] .region-badge { background: #334155; color: var(--teal-400); }
 [data-theme="dark"] .region-tab { background: #1e293b; border-color: #334155; }
+
+/* ---------- Teasers (Landing Page) ---------- */
+.teaser-card {
+  background: var(--bg);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft);
+  transition: all .4s var(--ease);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.teaser-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--teal-300);
+  box-shadow: var(--shadow);
+}
+.teaser-card h2 {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+  color: var(--teal-800);
+}
+.teaser-card p {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.teaser-grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Teaser Products */
+.product-teaser-card {
+  background: var(--bg-alt);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-soft);
+  text-align: center;
+}
+.product-teaser-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+.product-teaser-card p {
+  font-weight: 700;
+  color: var(--teal-700);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Teaser Testimonios */
+.test-teaser-item {
+  padding: 16px;
+  background: var(--bg-tint);
+  border-radius: var(--radius-sm);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.test-teaser-item strong {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  color: var(--teal-800);
+}
+
+/* ---------- Subpage Headers ---------- */
+.page-header {
+  padding: clamp(60px, 10vw, 100px) 0 40px;
+  text-align: center;
+}
+.page-header h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--teal-800), var(--teal-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-header .lead {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+/* Dark Mode Teasers */
+[data-theme="dark"] .teaser-card { background: #1e293b; border-color: #334155; }
+[data-theme="dark"] .product-teaser-card { background: #0f172a; border-color: #334155; }
+[data-theme="dark"] .test-teaser-item { background: rgba(20, 184, 166, 0.1); }
+[data-theme="dark"] .teaser-card h2 { color: var(--teal-400); }
+

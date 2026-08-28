@@ -4,11 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="nav.sintomas">Clínica - SGB · Concienciación</title>
-  
-  <!-- SEO & Social -->
-  <meta name="description" content="Información clínica detallada sobre el Síndrome de Guillain-Barré: síntomas, diagnóstico y red de apoyo internacional." data-i18n-attr="content:meta.description" />
-  <link rel="canonical" href="https://sgb-concienciacion.vercel.app/clinica.html" />
-  
+  <meta name="description" content="Información clínica detallada sobre el Síndrome de Guillain-Barré." data-i18n-attr="content:meta.description" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,72 +12,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body class="subpage">
-  <a href="#main-content" class="skip-link" data-i18n="skip.content">Saltar al contenido</a>
+  <a href="#main" class="skip-link" data-i18n="skip.content">Saltar al contenido</a>
 
-  <!-- Header -->
-  <header class="header sticky" id="header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo" aria-label="Inicio - SGB" data-i18n-attr="aria-label:brand.aria">
-        <span class="logo-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.16 0-3-.71-.84-1.9-1.26-3-2z"/><path d="m10 10-5.5 5.5"/><path d="m14 6-5.5 5.5"/><path d="M17 3l-5.5 5.5"/><circle cx="19" cy="5" r="2"/></svg>
-        </span>
-        <span class="logo-text">SGB <small>Concienciación</small></span>
+  <header class="site-header sticky" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Inicio - SGB" data-i18n-attr="aria-label:brand.aria">
+        <span class="brand-text">SGB<span class="brand-dot">.</span></span>
       </a>
-
-      <nav class="nav" id="navMenu" aria-label="Navegación principal">
-        <ul role="list">
-          <li><a href="index.html" data-i18n="nav.inicio">Inicio</a></li>
-          <li><a href="clinica.html" class="active" aria-current="page" data-i18n="nav.sintomas">Clínica</a></li>
-          <li><a href="educacion.html" data-i18n="nav.concienciacion">Educación</a></li>
-          <li><a href="comunidad.html" data-i18n="nav.testimonios">Comunidad</a></li>
-          <li><a href="tienda.html" data-i18n="nav.merchan">Tienda</a></li>
-          <li><a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <ul class="nav-list" role="list">
+          <li><a href="index.html" class="nav-link" data-i18n="nav.inicio">Inicio</a></li>
+          <li><a href="clinica.html" class="nav-link active" aria-current="page" data-i18n="nav.sintomas">Clínica</a></li>
+          <li><a href="educacion.html" class="nav-link" data-i18n="nav.concienciacion">Educación</a></li>
+          <li><a href="comunidad.html" class="nav-link" data-i18n="nav.testimonios">Comunidad</a></li>
+          <li><a href="tienda.html" class="nav-link" data-i18n="nav.merchan">Tienda</a></li>
+          <li><a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Dashboard</a></li>
         </ul>
       </nav>
-
-      <div class="nav-actions">
-        <div class="lang-selector">
-          <button class="lang-btn" id="langBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Cambiar idioma">
-            <span id="currentLang">ES</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-          </button>
-          <ul class="lang-dropdown" id="langDropdown" role="listbox">
-            <li role="option" data-value="es">Español</li>
-            <li role="option" data-value="en">English</li>
-            <li role="option" data-value="de">Deutsch</li>
-            <li role="option" data-value="fr">Français</li>
-          </ul>
-        </div>
-        <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema" data-i18n-attr="aria-label:attr.theme">
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" data-i18n-attr="aria-label:attr.theme">
           <svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-controls="navMenu" aria-expanded="false" data-i18n-attr="aria-label:attr.menu.open">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path class="top" d="M4 7h16"/><path class="mid" d="M4 12h16"/><path class="bot" d="M4 17h16"/></svg>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <main id="main-content">
-    <section class="page-header container">
-      <h1 data-i18n="clinica.title">Información Clínica y Apoyo</h1>
-      <p class="lead" data-i18n="clinica.lead">Explora los síntomas, el diagnóstico y conecta con redes de apoyo globales para pacientes y familiares.</p>
+  <main id="main">
+    <section class="page-header container reveal">
+      <h1 data-i18n="clinica.title">Información Clínica</h1>
+      <p class="lead" data-i18n="clinica.lead">Explora los síntomas, el diagnóstico y conecta con redes de apoyo globales.</p>
     </section>
 
-    <!-- Síntomas -->
     <section id="sintomas" class="section container">
-      <div class="section-head">
-        <h2 data-i18n="sintomas.title">Síntomas y Progresión</h2>
+      <div class="section-head reveal">
+        <span class="kicker" data-i18n="sintomas.kicker">Señales de alerta</span>
+        <h2 data-i18n="sintomas.title">Progresión del SGB</h2>
       </div>
-      <!-- Mapa interactivo de síntomas -->
+      
       <div class="symptoms-map-container reveal">
-        <h3 class="map-title" data-i18n="sintomas.map.title">Explora cómo progresa el SGB</h3>
-        <p class="map-subtitle" data-i18n="sintomas.map.subtitle">Haz clic en los puntos para ver la evolución habitual de la debilidad.</p>
-        
         <div class="map-wrapper">
           <div class="human-body-svg">
-            <svg viewBox="0 0 200 500" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+            <svg viewBox="0 0 200 500" width="100%" height="100%">
               <path d="M100 20c-15 0-25 10-25 25s10 25 25 25 25-10 25-25-10-25-25-25zM75 75c-20 5-30 20-30 40v120c0 10 5 15 15 15h10v180c0 20 10 30 30 30s30-10 30-30V250h10c10 0 15-5 15-15V115c0-20-10-35-30-40H75z" fill="var(--bg-alt)" stroke="var(--line)" stroke-width="2"/>
               <circle class="hotspot" data-step="1" cx="100" cy="430" r="10" fill="var(--teal-500)"/>
               <circle class="hotspot" data-step="2" cx="100" cy="330" r="10" fill="var(--teal-500)"/>
@@ -90,69 +65,41 @@
               <circle class="hotspot" data-step="5" cx="100" cy="45" r="10" fill="var(--teal-500)"/>
             </svg>
           </div>
-          
           <div class="map-info-panel" id="mapInfoPanel">
             <div class="info-content active" data-step="default">
               <h4 data-i18n="sintomas.map.default.h">Progresión Ascendente</h4>
-              <p data-i18n="sintomas.map.default.p">Selecciona una zona del cuerpo para ver cómo se manifiesta el SGB en esa fase.</p>
+              <p data-i18n="sintomas.map.default.p">Selecciona una zona para ver los síntomas.</p>
             </div>
-            <div class="info-content" data-step="1" hidden><h4 data-i18n="sintomas.map.s1.h">1. Pies y Tobillos</h4><p data-i18n="sintomas.map.s1.p">Hormigueo y pérdida inicial de reflejos.</p></div>
-            <div class="info-content" data-step="2" hidden><h4 data-i18n="sintomas.map.s2.h">2. Piernas y Rodillas</h4><p data-i18n="sintomas.map.s2.p">Debilidad muscular que dificulta caminar.</p></div>
-            <div class="info-content" data-step="3" hidden><h4 data-i18n="sintomas.map.s3.h">3. Tronco y Manos</h4><p data-i18n="sintomas.map.s3.p">Afecta la destreza manual y la fuerza en los brazos.</p></div>
-            <div class="info-content" data-step="4" hidden><h4 data-i18n="sintomas.map.s4.h">4. Músculos Respiratorios</h4><p data-i18n="sintomas.map.s4.p">Fase crítica. Requiere vigilancia intensiva.</p></div>
-            <div class="info-content" data-step="5" hidden><h4 data-i18n="sintomas.map.s5.h">5. Nervios Craneales</h4><p data-i18n="sintomas.map.s5.p">Afecta al habla y los movimientos faciales.</p></div>
+            <div class="info-content" data-step="1" hidden><h4 data-i18n="sintomas.map.s1.h">1. Pies</h4><p data-i18n="sintomas.map.s1.p">Hormigueo inicial.</p></div>
+            <div class="info-content" data-step="2" hidden><h4 data-i18n="sintomas.map.s2.h">2. Piernas</h4><p data-i18n="sintomas.map.s2.p">Debilidad muscular.</p></div>
+            <div class="info-content" data-step="3" hidden><h4 data-i18n="sintomas.map.s3.h">3. Tronco</h4><p data-i18n="sintomas.map.s3.p">Afecta la fuerza central.</p></div>
+            <div class="info-content" data-step="4" hidden><h4 data-i18n="sintomas.map.s4.h">4. Pulmones</h4><p data-i18n="sintomas.map.s4.p">Fase crítica respiratoria.</p></div>
+            <div class="info-content" data-step="5" hidden><h4 data-i18n="sintomas.map.s5.h">5. Rostro</h4><p data-i18n="sintomas.map.s5.p">Nervios craneales.</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Red de Apoyo -->
     <section id="apoyo" class="section section-alt">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-head">
+          <span class="kicker" data-i18n="map.kicker">Recursos</span>
           <h2 data-i18n="map.title">Red de Apoyo Global</h2>
         </div>
         <div class="support-map-wrapper">
           <div class="support-regions">
             <button class="region-tab active" data-region="all" data-i18n="test.tab.all">Todos</button>
-            <button class="region-tab" data-region="es" data-i18n="map.region.es">España</button>
-            <button class="region-tab" data-region="latam" data-i18n="map.region.latam">Latinoamérica</button>
-            <button class="region-tab" data-region="intl" data-i18n="map.region.intl">Internacional</button>
+            <button class="region-tab" data-region="es">España</button>
+            <button class="region-tab" data-region="latam">Latinoamérica</button>
+            <button class="region-tab" data-region="intl">Internacional</button>
           </div>
-          <div class="support-grid" id="supportGrid">
-            <!-- Dinámico -->
-          </div>
+          <div class="support-grid" id="supportGrid"></div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <span class="logo-text">SGB <small>Concienciación</small></span>
-        </a>
-        <p data-i18n="footer.about">Plataforma dedicada a la visibilidad y apoyo de personas afectadas por el Síndrome de Guillain-Barré.</p>
-      </div>
-      <div class="footer-nav">
-        <div class="footer-col">
-          <h4 data-i18n="footer.col.info">Información</h4>
-          <ul role="list">
-            <li><a href="clinica.html" data-i18n="nav.sintomas">Clínica</a></li>
-            <li><a href="educacion.html" data-i18n="nav.concienciacion">Educación</a></li>
-            <li><a href="index.html#faq" data-i18n="nav.faq">Preguntas frecuentes</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4 data-i18n="footer.col.imple">Implicarse</h4>
-          <ul role="list">
-            <li><a href="index.html#ayuda" data-i18n="nav.ayuda">Cómo ayudar</a></li>
-            <li><a href="tienda.html" data-i18n="cta.tienda">Tienda solidaria</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <div class="container footer-bottom">
       <p>© 2026 SGB · Proyecto de concienciación.</p>
     </div>
