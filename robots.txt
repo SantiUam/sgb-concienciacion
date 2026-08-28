@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sgb-concienciacion.example/sitemap.xml
+Sitemap: https://sgb-concienciacion.vercel.app/sitemap.xml
