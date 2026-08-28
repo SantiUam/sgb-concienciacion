@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="nav.testimonios">Comunidad - SGB · Concienciación</title>
+  <meta name="description" content="Lee y comparte testimonios reales sobre el Síndrome de Guillain-Barré. No estás solo en este camino." data-i18n-attr="content:meta.description" />
+  <link rel="canonical" href="https://sgb-concienciacion.vercel.app/comunidad.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="subpage">
+  <header class="header sticky" id="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-text">SGB <small>Concienciación</small></span>
+      </a>
+      <nav class="nav" id="navMenu">
+        <ul role="list">
+          <li><a href="index.html" data-i18n="nav.inicio">Inicio</a></li>
+          <li><a href="clinica.html" data-i18n="nav.sintomas">Clínica</a></li>
+          <li><a href="educacion.html" data-i18n="nav.concienciacion">Educación</a></li>
+          <li><a href="comunidad.html" class="active" aria-current="page" data-i18n="nav.testimonios">Comunidad</a></li>
+          <li><a href="tienda.html" data-i18n="nav.merchan">Tienda</a></li>
+          <li><a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle">
+          <svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-header container">
+      <h1 data-i18n="nav.testimonios">Comunidad SGB</h1>
+      <p class="lead">Historias de lucha, superación y esperanza de personas que han vivido el SGB.</p>
+      <button class="btn btn-primary" id="shareBtnTop" data-i18n="cta.testimonios">Compartir mi historia</button>
+    </section>
+
+    <section id="testimonios" class="section container">
+      <div class="test-filters" role="tablist">
+        <button class="test-tab active" data-filter="all" role="tab" aria-selected="true" data-i18n="test.filter.all">Todos</button>
+        <button class="test-tab" data-filter="text" role="tab" aria-selected="false" data-i18n="test.type.text">Texto</button>
+        <button class="test-tab" data-filter="video" role="tab" aria-selected="false" data-i18n="test.type.video">Vídeo</button>
+      </div>
+      <div class="test-grid" id="testGrid">
+        <!-- Testimonios dinámicos -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Testimonio (lo copiaré de index.html más tarde o lo haré global) -->
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>© 2026 SGB · Proyecto de concienciación.</p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -252,6 +252,41 @@
 
   loadCart();
   loadGoal();
+  renderTeasers();
+  renderSupportGrid();
+  renderMilestones();
+
+  /* ---------- Renderizado de Teasers (Landing) ---------- */
+  function renderTeasers() {
+    var teaserProducts = doc.getElementById("teaserProducts");
+    if (teaserProducts) {
+      // Mostrar solo los 3 primeros productos como teaser
+      var products = [
+        { name: tt("merchan.p1.title", "Camiseta"), price: 22, pkey: "merchan.p1.title" },
+        { name: tt("merchan.p2.title", "Gorra"), price: 18, pkey: "merchan.p2.title" },
+        { name: tt("merchan.p3.title", "Pulsera"), price: 8, pkey: "merchan.p3.title" }
+      ];
+      teaserProducts.innerHTML = "";
+      products.forEach(function (p) {
+        var art = doc.createElement("article");
+        art.className = "product-teaser-card";
+        art.innerHTML = "<h4>" + esc(p.name) + "</h4><p>" + p.price + " €</p>";
+        teaserProducts.appendChild(art);
+      });
+    }
+
+    var teaserTests = doc.getElementById("teaserTestimonios");
+    if (teaserTests) {
+       var tests = getTestimonios().slice(0, 2);
+       teaserTests.innerHTML = "";
+       tests.forEach(function(t) {
+          var div = doc.createElement("div");
+          div.className = "test-teaser-item";
+          div.innerHTML = "<p>\"" + esc(t.content || t.caption).substring(0, 80) + "...\"</p><strong>" + esc(t.name) + "</strong>";
+          teaserTests.appendChild(div);
+       });
+    }
+  }
 
   /* ---------- Animación al hacer scroll (reveal) ---------- */
   var revealEls = doc.querySelectorAll(".reveal");
@@ -426,13 +461,15 @@
     localStorage.setItem(STORAGE_TEST_KEY, JSON.stringify(tests));
   }
 
-  function renderTestimonios() {
+  function renderTestimonios(limit) {
     if (!testGrid) return;
     var tests = getTestimonios();
     var filtered = tests.filter(function (t) {
       if (currentFilter === "all") return true;
       return t.type === currentFilter;
     });
+
+    if (limit) filtered = filtered.slice(0, limit);
 
     testGrid.innerHTML = "";
     if (filtered.length === 0) {
@@ -1242,5 +1279,40 @@
       });
     });
   });
+
+  /* ---------- Red de Apoyo ---------- */
+  function renderSupportGrid(filter) {
+    var grid = doc.getElementById("supportGrid");
+    if (!grid) return;
+    
+    var assocs = [
+      { n: "Asociación SGB España", r: "es", d: "Apoyo nacional." },
+      { n: "GBS Foundation", r: "intl", d: "Global support." },
+      { n: "Red LATAM", r: "latam", d: "América Latina." }
+    ];
+
+    grid.innerHTML = "";
+    assocs.filter(function(a) { return !filter || filter === "all" || a.r === filter; }).forEach(function(a) {
+       var card = doc.createElement("article");
+       card.className = "assoc-card";
+       card.innerHTML = "<h3>" + a.n + "</h3><p>" + a.d + "</p>";
+       grid.appendChild(card);
+    });
+  }
+
+  doc.querySelectorAll(".region-tab").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+       doc.querySelectorAll(".region-tab").forEach(function(b) { b.classList.remove("active"); });
+       btn.classList.add("active");
+       renderSupportGrid(btn.dataset.region);
+    });
+  });
+
+  /* ---------- Hitos ---------- */
+  function renderMilestones() {
+     var container = doc.getElementById("milestones-content");
+     if (!container) return;
+     container.innerHTML = "<div class='milestones-grid'><div class='milestone-card'><h4>Primer Paso</h4><p>¡Conseguido!</p></div></div>";
+  }
 
 })();
